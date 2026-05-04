@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medpro — Cursos Online na Área da Saúde</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & VARIABLES
+   ============================================================ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal-950:#042f2e;
+  --teal-900:#134e4a;
+  --teal-800:#0f766e;
+  --teal-700:#0d9488;
+  --teal-600:#0d9488;
+  --teal-500:#14b8a6;
+  --teal-400:#2dd4bf;
+  --teal-300:#5eead4;
+  --teal-200:#99f6e4;
+  --teal-100:#ccfbf1;
+  --teal-50:#f0fdfa;
+  --white:#ffffff;
+  --gray-50:#f9fafb;
+  --gray-100:#f3f4f6;
+  --gray-200:#e5e7eb;
+  --gray-300:#d1d5db;
+  --gray-400:#9ca3af;
+  --gray-500:#6b7280;
+  --gray-600:#4b5563;
+  --gray-700:#374151;
+  --gray-800:#1f2937;
+  --gray-900:#111827;
+  --font-serif:'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans:'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --shadow-classic:0 2px 8px rgba(0,0,0,.12), 0 1px 3px rgba(0,0,0,.08);
+  --shadow-heavy:0 4px 16px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.10);
+  --shadow-deep:0 8px 32px rgba(0,0,0,.20), 0 3px 12px rgba(0,0,0,.12);
+  --border-classic:1px solid var(--gray-300);
+  --radius-classic:6px;
+  --radius-lg:12px;
+  --radius-xl:16px;
+  --transition-smooth:all .3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-sans);
+  color:var(--gray-800);
+  line-height:1.7;
+  overflow-x:hidden;
+  background:var(--gray-50);
+}
+img{max-width:100%;height:auto;display:block}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.text-center{text-align:center}
+
+/* ============================================================
+   VINTAGE DECORATIVE ELEMENTS
+   ============================================================ */
+.section-divider{
+  text-align:center;
+  padding:16px 0;
+  position:relative;
+}
+.section-divider::before{
+  content:'';display:block;width:80%;max-width:500px;height:1px;
+  background:linear-gradient(90deg, transparent, var(--teal-400), transparent);
+  margin:0 auto 12px;
+}
+.section-divider::after{
+  content:'◆';display:block;
+  color:var(--teal-500);font-size:14px;letter-spacing:12px;
+}
+.ornament-line{
+  display:block;width:60px;height:3px;
+  background:linear-gradient(90deg,var(--teal-700),var(--teal-400));
+  margin:14px auto 0;border-radius:2px;
+}
+.badge-seal{
+  display:inline-block;
+  padding:5px 16px;
+  border:2px solid var(--teal-500);
+  border-radius:20px;
+  font-family:var(--font-sans);
+  font-size:.7rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  color:var(--teal-700);
+  background:var(--teal-50);
+}
+.section-heading{
+  font-family:var(--font-serif);
+  font-size:clamp(1.6rem,3.5vw,2.4rem);
+  font-weight:700;
+  color:var(--teal-950);
+  line-height:1.25;
+  margin-bottom:8px;
+}
+.section-subtitle{
+  font-size:1rem;
+  color:var(--gray-500);
+  max-width:620px;
+  margin:0 auto 40px;
+  line-height:1.8;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(4,47,46,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--teal-800);
+  box-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.topnav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1140px;margin:0 auto;padding:0 24px;height:60px;
+}
+.topnav-logo{
+  font-family:var(--font-serif);font-size:1.4rem;font-weight:700;
+  color:var(--white);text-decoration:none;
+}
+.topnav-logo span{color:var(--teal-400)}
+.topnav-links{display:flex;gap:6px;flex-wrap:wrap}
+.topnav-links a{
+  font-size:.78rem;font-weight:600;color:rgba(255,255,255,.75);
+  text-decoration:none;padding:6px 12px;border-radius:4px;
+  transition:color .2s,background .2s;letter-spacing:.3px;
+}
+.topnav-links a:hover{color:var(--white);background:rgba(255,255,255,.08)}
+.nav-toggle{display:none}
+.nav-toggle-label{
+  display:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px;
+}
+.nav-toggle-label span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform .2s}
+@media(max-width:768px){
+  .nav-toggle-label{display:flex}
+  .topnav-links{
+    display:none;position:absolute;top:60px;left:0;right:0;
+    background:rgba(4,47,46,.97);flex-direction:column;padding:12px 24px 20px;
+    border-bottom:2px solid var(--teal-800);
+  }
+  .nav-toggle:checked ~ .topnav-links{display:flex}
+  .topnav-links a{padding:10px 8px;font-size:.85rem}
+}
+
+/* ============================================================
+   HERO — REDESIGN WITH IMAGE
+   ============================================================ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  background:var(--teal-950);overflow:hidden;
+  padding-top:60px;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(13,148,136,.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(20,184,166,.10) 0%, transparent 50%);
+  background-color:var(--teal-950);
+}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;opacity:.3}
+.blob-1{width:600px;height:600px;background:var(--teal-700);top:-15%;right:-8%}
+.blob-2{width:420px;height:420px;background:var(--teal-500);bottom:-10%;left:3%}
+.blob-3{width:260px;height:260px;background:var(--teal-300);top:42%;left:38%}
+
+.hero-content{
+  position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:48px;max-width:1140px;margin:0 auto;padding:60px 24px;
+}
+.hero-text .overline{
+  display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:3px;color:var(--teal-400);margin-bottom:20px;
+  padding:6px 14px;
+  border:1px solid rgba(45,212,191,.3);
+  border-radius:4px;
+  background:rgba(45,212,191,.06);
+}
+.hero-text h1{
+  font-family:var(--font-serif);
+  font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;color:var(--white);
+  line-height:1.2;margin-bottom:20px;
+}
+.hero-text h1 em{font-style:italic;color:var(--teal-400)}
+.hero-text .hero-desc{
+  font-size:1.05rem;color:rgba(255,255,255,.65);margin-bottom:36px;max-width:460px;line-height:1.8;
+}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;padding:15px 34px;border:none;cursor:pointer;
+  border-radius:var(--radius-classic);
+  background:linear-gradient(135deg,var(--teal-700),var(--teal-500));
+  color:var(--white);font-size:.95rem;font-weight:700;font-family:var(--font-sans);
+  box-shadow:0 4px 20px rgba(13,148,136,.35), inset 0 1px 0 rgba(255,255,255,.15);
+  transition:transform .2s,box-shadow .2s;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.1);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(13,148,136,.45)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;padding:14px 28px;
+  border:2px solid rgba(255,255,255,.25);border-radius:var(--radius-classic);
+  background:transparent;color:rgba(255,255,255,.85);font-size:.9rem;font-weight:600;
+  cursor:pointer;font-family:var(--font-sans);transition:border-color .2s,color .2s;
+  text-decoration:none;
+}
+.btn-secondary:hover{border-color:var(--teal-400);color:var(--white)}
+
+/* Hero image side */
+.hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;gap:20px}
+.hero-image-wrapper{
+  position:relative;
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.08);
+  max-width:460px;
+  width:100%;
+}
+.hero-image-wrapper::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(4,47,46,.5) 100%);
+  pointer-events:none;
+}
+.hero-image-wrapper img{
+  width:100%;height:auto;
+  display:block;
+  object-fit:cover;
+}
+.hero-stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:460px;
+}
+.stat-pill{
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-lg);
+  padding:16px 14px;
+  text-align:center;
+  transition:var(--transition-smooth);
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.stat-pill:hover{background:rgba(255,255,255,.10);border-color:rgba(45,212,191,.25);transform:translateY(-2px)}
+.stat-pill .number{
+  font-family:var(--font-serif);font-size:1.6rem;font-weight:700;
+  color:var(--teal-400);line-height:1;
+}
+.stat-pill .label{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:4px;line-height:1.3}
+.hero-trust{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:4px;
+}
+.trust-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 13px;border-radius:6px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  font-size:.73rem;color:rgba(255,255,255,.55);
+  transition:var(--transition-smooth);
+}
+.trust-badge:hover{background:rgba(255,255,255,.08)}
+.trust-badge .trust-icon{font-size:.95rem}
+
+@media(max-width:768px){
+  .hero-content{grid-template-columns:1fr;text-align:center;padding:40px 20px}
+  .hero-text .hero-desc{margin-left:auto;margin-right:auto}
+  .hero-buttons{justify-content:center}
+  .hero-visual{align-items:center}
+  .hero-image-wrapper{max-width:340px}
+  .hero-stats-row{max-width:340px}
+  .stat-pill .number{font-size:1.3rem}
+  .hero-trust{justify-content:center}
+}
+
+/* ============================================================
+   TOPICS / BENEFITS
+   ============================================================ */
+.topics{
+  padding:100px 24px;
+  background:var(--white);
+  background-image:
+    linear-gradient(180deg, var(--gray-50) 0%, var(--white) 5%, var(--white) 95%, var(--gray-50) 100%);
+  border-top:3px solid var(--teal-100);
+  border-bottom:3px solid var(--teal-100);
+}
+.topics-wrap{max-width:1100px;margin:0 auto;text-align:center}
+.topics-wrap .section-heading{margin-bottom:6px}
+.topics-list{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:18px;margin-top:48px;text-align:left;
+}
+.topic-item{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:26px 24px;border-radius:var(--radius-classic);
+  border:var(--border-classic);
+  background:var(--white);
+  box-shadow:var(--shadow-classic);
+  transition:var(--transition-smooth);
+}
+.topic-item:hover{
+  border-color:var(--teal-300);
+  box-shadow:var(--shadow-heavy);
+  transform:translateY(-3px);
+}
+.topic-num{
+  flex-shrink:0;width:44px;height:44px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--teal-100),var(--teal-50));
+  color:var(--teal-700);font-size:.82rem;font-weight:800;
+  border:1px solid var(--teal-200);
+  box-shadow:0 1px 4px rgba(13,148,136,.12);
+}
+.topic-item h3{
+  font-family:var(--font-serif);font-size:1.02rem;font-weight:700;
+  color:var(--teal-950);margin-bottom:5px;
+}
+.topic-item p{font-size:.88rem;color:var(--gray-500);line-height:1.7}
+.topics-legal{
+  margin-top:34px;
+  padding:34px 30px;
+  border-radius:var(--radius-xl);
+  text-align:left;
+  background:
+    linear-gradient(135deg, rgba(4,47,46,.98), rgba(15,118,110,.96));
+  color:var(--white);
+  box-shadow:0 22px 48px rgba(4,47,46,.20);
+  border:1px solid rgba(94,234,212,.18);
+}
+.topics-legal h3{
+  font-family:var(--font-serif);
+  font-size:clamp(1.5rem,3.2vw,2.2rem);
+  line-height:1.2;
+  margin-bottom:14px;
+  color:var(--white);
+  max-width:760px;
+}
+.topics-legal h3 .highlight{color:var(--teal-300)}
+.topics-legal-intro p{
+  max-width:760px;
+  color:rgba(255,255,255,.78);
+  line-height:1.85;
+  font-size:.98rem;
+}
+.topics-legal-points{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:28px;
+}
+.topics-legal-point{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:16px 18px;
+  border-radius:var(--radius-lg);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+.topics-legal-icon{
+  width:42px;
+  height:42px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  border:1px solid rgba(94,234,212,.45);
+  background:rgba(204,251,241,.08);
+  color:var(--teal-200);
+  font-size:1.1rem;
+}
+.topics-legal-point strong{
+  display:block;
+  color:var(--white);
+  font-size:.92rem;
+  line-height:1.5;
+}
+.topics-legal-note{
+  margin-top:24px;
+  padding:22px 22px 22px 18px;
+  border-left:4px solid var(--teal-300);
+  border-radius:0 var(--radius-lg) var(--radius-lg) 0;
+  background:rgba(2,24,39,.20);
+}
+.topics-legal-note h4{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--teal-200);
+  font-size:1.02rem;
+  margin-bottom:10px;
+}
+.topics-legal-note p{
+  color:rgba(255,255,255,.78);
+  line-height:1.8;
+  font-size:.94rem;
+}
+@media(max-width:900px){
+  .topics-legal-points{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .topics-legal{
+    padding:28px 20px;
+    text-align:left;
+  }
+  .topics-legal h3{font-size:1.6rem}
+}
+
+/* ============================================================
+   EQUIPE (NEW)
+   ============================================================ */
+.equipe{
+  padding:100px 24px;
+  background:var(--teal-950);
+  position:relative;overflow:hidden;
+  background-image:
+    radial-gradient(ellipse at 30% 80%, rgba(13,148,136,.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 20%, rgba(20,184,166,.08) 0%, transparent 50%);
+}
+.equipe-content{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr;gap:40px;align-items:center;
+}
+.equipe-images{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.equipe-images img{
+  border-radius:var(--radius-lg);
+  box-shadow:0 8px 32px rgba(0,0,0,.3);
+  object-fit:cover;width:100%;aspect-ratio:3/4;
+  transition:var(--transition-smooth);
+  border:2px solid rgba(255,255,255,.08);
+}
+.equipe-images img:hover{transform:scale(1.03);border-color:rgba(45,212,191,.3)}
+.equipe-text .badge-seal{border-color:var(--teal-400);color:var(--teal-300);background:rgba(45,212,191,.08)}
+.equipe-text .section-heading{color:var(--white);margin-top:14px}
+.equipe-text .ornament-line{margin:14px 0 0}
+.equipe-text p{color:rgba(255,255,255,.65);font-size:.95rem;line-height:1.9;margin-top:20px}
+.equipe-text p strong{color:var(--teal-300)}
+.equipe-highlights{
+  display:flex;gap:24px;margin-top:28px;flex-wrap:wrap;
+}
+.equipe-highlight{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;
+  border-radius:var(--radius-classic);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+}
+.equipe-highlight .eh-icon{font-size:1.3rem}
+.equipe-highlight .eh-text{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:600}
+@media(max-width:768px){
+  .equipe-content{grid-template-columns:1fr;text-align:center}
+  .equipe-images{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .equipe-images img{aspect-ratio:4/3;max-height:280px}
+  .equipe-highlights{justify-content:center}
+  .equipe-text .ornament-line{margin:14px auto 0}
+}
+
+/* ============================================================
+   METODOLOGIA (NEW)
+   ============================================================ */
+.metodologia{
+  padding:100px 24px;
+  background:var(--white);
+  background-image:
+    linear-gradient(180deg, var(--gray-50) 0%, var(--white) 5%, var(--white) 95%, var(--gray-50) 100%);
+  border-top:3px solid var(--teal-100);
+}
+.metodologia-header{text-align:center;margin-bottom:60px}
+.metodo-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  max-width:1060px;margin:0 auto;
+  margin-bottom:60px;
+}
+.metodo-row:last-child{margin-bottom:0}
+.metodo-row.reverse{direction:rtl}
+.metodo-row.reverse > *{direction:ltr}
+.metodo-img{
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-deep);
+  border:3px solid var(--teal-100);
+  transition:var(--transition-smooth);
+}
+.metodo-img:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.22)}
+.metodo-img img{width:100%;height:320px;object-fit:cover;display:block}
+.metodo-text h3{
+  font-family:var(--font-serif);font-size:1.4rem;font-weight:700;
+  color:var(--teal-950);margin-bottom:14px;
+}
+.metodo-text p{font-size:.92rem;color:var(--gray-600);line-height:1.85;margin-bottom:12px}
+.metodo-features{list-style:none;padding:0;margin-top:16px}
+.metodo-features li{
+  font-size:.88rem;color:var(--gray-600);line-height:1.7;
+  padding:8px 0 8px 28px;position:relative;
+  border-bottom:1px solid var(--gray-100);
+}
+.metodo-features li:last-child{border-bottom:none}
+.metodo-features li::before{
+  content:'✓';position:absolute;left:0;top:8px;
+  color:var(--teal-500);font-weight:800;font-size:.9rem;
+}
+@media(max-width:768px){
+  .metodo-row,.metodo-row.reverse{grid-template-columns:1fr;direction:ltr;gap:28px}
+  .metodo-row.reverse > *{direction:ltr}
+  .metodo-img img{height:240px}
+  .metodo-row{margin-bottom:48px}
+}
+
+/* ============================================================
+   PRÁTICA PROFISSIONAL (NEW)
+   ============================================================ */
+.pratica{
+  padding:100px 24px;
+  background:var(--teal-50);
+  border-top:3px solid var(--teal-100);
+  border-bottom:3px solid var(--teal-100);
+  position:relative;
+  overflow:hidden;
+}
+.pratica::before{
+  content:'';position:absolute;top:-60px;right:-60px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(13,148,136,.08),transparent 70%);
+  pointer-events:none;
+}
+.pratica-content{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.pratica-img{
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-deep);
+  border:3px solid var(--teal-200);
+  transition:var(--transition-smooth);
+}
+.pratica-img:hover{transform:scale(1.02)}
+.pratica-img img{width:100%;height:380px;object-fit:cover;display:block}
+.pratica-text h2{
+  font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;
+  color:var(--teal-950);margin-bottom:16px;line-height:1.3;
+}
+.pratica-text p{font-size:.95rem;color:var(--gray-600);line-height:1.85;margin-bottom:14px}
+.pratica-callout{
+  margin-top:24px;
+  padding:20px 24px;
+  background:var(--white);
+  border-left:4px solid var(--teal-500);
+  border-radius:0 var(--radius-classic) var(--radius-classic) 0;
+  box-shadow:var(--shadow-classic);
+}
+.pratica-callout p{font-size:.9rem;color:var(--gray-700);font-style:italic;margin:0;line-height:1.8}
+@media(max-width:768px){
+  .pratica-content{grid-template-columns:1fr;text-align:center}
+  .pratica-img img{height:260px}
+  .pratica-callout{text-align:left}
+}
+
+/* ============================================================
+   COURSE CATALOGUE
+   ============================================================ */
+.catalogo{
+  padding:100px 24px;
+  background:
+    linear-gradient(180deg, var(--gray-50) 0%, var(--gray-100) 50%, var(--gray-50) 100%);
+  background-image:
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,.015) 60px, rgba(0,0,0,.015) 61px),
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(0,0,0,.015) 60px, rgba(0,0,0,.015) 61px),
+    linear-gradient(180deg, var(--gray-50) 0%, var(--gray-100) 50%, var(--gray-50) 100%);
+}
+.catalogo-header{text-align:center;margin-bottom:60px}
+.catalogo-header .section-heading{margin-bottom:6px}
+.nicho-section{margin-bottom:50px}
+.nicho-title{
+  font-family:var(--font-serif);font-size:1.4rem;font-weight:700;
+  color:var(--teal-900);
+  padding:14px 20px;
+  background:linear-gradient(90deg,var(--teal-50),transparent);
+  border-left:4px solid var(--teal-600);
+  border-radius:0 var(--radius-classic) var(--radius-classic) 0;
+  margin-bottom:20px;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  display:flex;align-items:center;gap:12px;
+}
+.nicho-icon{font-size:1.2rem}
+.nicho-count{
+  font-family:var(--font-sans);font-size:.72rem;font-weight:700;
+  color:var(--teal-600);background:var(--teal-100);
+  padding:3px 10px;border-radius:12px;margin-left:auto;
+}
+.nicho-launch-wrap{
+  margin:-4px 0 20px;
+  padding:18px 20px;
+  border-radius:var(--radius-classic);
+  background:linear-gradient(135deg, rgba(4,47,46,.97), rgba(15,118,110,.92));
+  border:1px solid rgba(45,212,191,.16);
+  box-shadow:0 12px 28px rgba(4,47,46,.14);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nicho-launch-copy{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;
+}
+.nicho-launch-badge{
+  display:inline-flex;align-items:center;padding:6px 12px;border-radius:999px;
+  background:rgba(254,240,138,.18);color:#fef08a;border:1px solid rgba(254,240,138,.32);
+  font-size:.72rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+}
+.nicho-launch-text{
+  color:rgba(255,255,255,.86);font-size:.94rem;line-height:1.6;
+}
+.nicho-launch-text strong{color:var(--white)}
+.nicho-launch-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:12px 18px;border-radius:999px;
+  background:linear-gradient(135deg,var(--teal-400),var(--teal-600));
+  color:var(--white);font-size:.86rem;font-weight:800;text-decoration:none;white-space:nowrap;
+  box-shadow:0 8px 24px rgba(20,184,166,.28);
+  animation:ctaPulse 2s ease-in-out infinite;
+}
+.nicho-launch-cta:hover{transform:translateY(-2px);animation-play-state:paused}
+@keyframes ctaPulse{
+  0%,100%{transform:scale(1);box-shadow:0 8px 24px rgba(20,184,166,.28)}
+  50%{transform:scale(1.03);box-shadow:0 12px 30px rgba(45,212,191,.38)}
+}
+.curso-card{
+  background:var(--white);
+  border:var(--border-classic);
+  border-radius:var(--radius-classic);
+  margin-bottom:14px;
+  box-shadow:var(--shadow-classic);
+  overflow:hidden;
+  transition:var(--transition-smooth);
+}
+.curso-card:hover{box-shadow:var(--shadow-heavy)}
+.curso-card[open]{border-color:var(--teal-400);box-shadow:var(--shadow-deep)}
+.curso-card summary{
+  padding:20px 24px;cursor:pointer;
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--font-serif);font-size:1.05rem;font-weight:600;
+  color:var(--teal-950);
+  list-style:none;
+  transition:background .2s;position:relative;
+}
+.curso-card summary::-webkit-details-marker{display:none}
+.curso-card summary::after{
+  content:'▸';margin-left:auto;font-size:1.2rem;color:var(--teal-500);
+  transition:transform .25s;
+}
+.curso-card[open] summary::after{transform:rotate(90deg)}
+.curso-card summary:hover{background:var(--teal-50)}
+.curso-card summary .curso-ch{
+  font-family:var(--font-sans);font-size:.72rem;font-weight:700;
+  color:var(--white);background:var(--teal-600);
+  padding:3px 10px;border-radius:4px;white-space:nowrap;
+  box-shadow:0 1px 3px rgba(13,148,136,.3);
+}
+.curso-body{padding:0 24px 24px;border-top:1px dashed var(--gray-200)}
+.curso-body .curso-desc{
+  font-size:.92rem;color:var(--gray-600);line-height:1.8;
+  margin:16px 0 14px;
+  padding:14px 16px;
+  background:var(--gray-50);
+  border-left:3px solid var(--teal-400);
+  border-radius:0 var(--radius-classic) var(--radius-classic) 0;
+}
+.curso-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.curso-meta-item{
+  font-size:.82rem;color:var(--gray-500);
+  display:flex;align-items:center;gap:6px;
+}
+.curso-meta-item strong{color:var(--gray-700)}
+.curso-meta-icon{font-size:.95rem}
+.modulos-title{
+  font-family:var(--font-serif);font-size:.92rem;font-weight:700;
+  color:var(--teal-800);margin-bottom:10px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--teal-100);
+}
+.modulos-list{list-style:none;padding:0;display:grid;grid-template-columns:1fr;gap:6px}
+.modulos-list li{
+  font-size:.84rem;color:var(--gray-600);line-height:1.6;
+  padding:8px 12px 8px 32px;position:relative;
+  background:var(--gray-50);border-radius:4px;border:1px solid var(--gray-100);
+}
+.modulos-list li::before{
+  content:attr(data-num);position:absolute;left:10px;top:8px;
+  font-size:.7rem;font-weight:800;color:var(--teal-500);
+}
+@media(max-width:768px){
+  .curso-card summary{flex-wrap:wrap;font-size:.95rem;padding:16px 18px}
+  .curso-body{padding:0 18px 18px}
+  .curso-meta{flex-direction:column;gap:8px}
+  .nicho-launch-wrap{flex-direction:column;align-items:flex-start}
+  .nicho-launch-cta{width:100%}
+}
+
+/* ============================================================
+   DEPOIMENTOS (NEW)
+   ============================================================ */
+.depoimentos{
+  padding:100px 24px;
+  background:var(--teal-950);
+  position:relative;overflow:hidden;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(13,148,136,.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(20,184,166,.08) 0%, transparent 50%);
+}
+.depoimentos-header{text-align:center;margin-bottom:56px}
+.depoimentos-header .badge-seal{border-color:var(--teal-400);color:var(--teal-300);background:rgba(45,212,191,.08)}
+.depoimentos-header .section-heading{color:var(--white);margin-top:14px}
+.depoimentos-header .section-subtitle{color:rgba(255,255,255,.55)}
+.depoimentos-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  max-width:1100px;margin:0 auto;
+}
+.depoimento-card{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius-xl);
+  padding:36px 28px 32px;
+  text-align:center;
+  transition:var(--transition-smooth);
+}
+.depoimento-card:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(45,212,191,.25);
+  transform:translateY(-4px);
+}
+.depoimento-avatar{
+  width:90px;height:90px;border-radius:50%;
+  object-fit:cover;margin:0 auto 18px;
+  border:3px solid var(--teal-400);
+  box-shadow:0 4px 16px rgba(0,0,0,.3);
+}
+.depoimento-quote{
+  font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.85;
+  font-style:italic;margin-bottom:20px;
+  position:relative;
+  padding-top:16px;
+}
+.depoimento-quote::before{
+  content:'"';font-family:var(--font-serif);font-size:3rem;
+  color:var(--teal-400);opacity:.4;
+  position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+}
+.depoimento-name{
+  font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--white);
+  margin-bottom:4px;
+}
+.depoimento-role{font-size:.78rem;color:var(--teal-400);font-weight:600;letter-spacing:.5px}
+.depoimento-stars{margin-top:10px;font-size:.85rem;letter-spacing:2px;color:var(--teal-400)}
+@media(max-width:900px){.depoimentos-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   CERTIFICAÇÃO (NEW)
+   ============================================================ */
+.certificacao{
+  padding:100px 24px;
+  background:var(--white);
+  background-image:
+    linear-gradient(180deg, var(--gray-50) 0%, var(--white) 5%, var(--white) 95%, var(--gray-50) 100%);
+  border-top:3px solid var(--teal-100);
+  border-bottom:3px solid var(--teal-100);
+}
+.certificacao-content{
+  max-width:1060px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.certificacao-img{
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-deep);
+  border:3px solid var(--teal-100);
+  transition:var(--transition-smooth);
+}
+.certificacao-img:hover{transform:scale(1.02)}
+.certificacao-img img{width:100%;height:380px;object-fit:cover;display:block}
+.certificacao-text h2{
+  font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;
+  color:var(--teal-950);margin-bottom:16px;line-height:1.3;
+}
+.certificacao-text p{font-size:.95rem;color:var(--gray-600);line-height:1.85;margin-bottom:14px}
+.cert-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+.cert-badge{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 18px;
+  background:var(--teal-50);
+  border:1px solid var(--teal-200);
+  border-radius:var(--radius-classic);
+  transition:var(--transition-smooth);
+}
+.cert-badge:hover{border-color:var(--teal-400);box-shadow:var(--shadow-classic);transform:translateY(-2px)}
+.cert-badge .cb-icon{font-size:1.4rem}
+.cert-badge .cb-text{font-size:.82rem;color:var(--teal-900);font-weight:600;line-height:1.4}
+@media(max-width:768px){
+  .certificacao-content{grid-template-columns:1fr;text-align:center}
+  .certificacao-img img{height:260px}
+  .cert-badges{justify-content:center}
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{
+  padding:100px 24px;
+  background:var(--white);
+  border-top:3px solid var(--teal-100);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(13,148,136,.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(13,148,136,.03) 0%, transparent 40%);
+}
+.faq-header{text-align:center;margin-bottom:50px}
+.faq-grid{max-width:820px;margin:0 auto}
+.faq-item{
+  border:var(--border-classic);
+  border-radius:var(--radius-classic);
+  margin-bottom:12px;
+  background:var(--white);
+  box-shadow:var(--shadow-classic);
+  overflow:hidden;
+  transition:var(--transition-smooth);
+}
+.faq-item:hover{box-shadow:var(--shadow-heavy)}
+.faq-item[open]{border-color:var(--teal-400)}
+.faq-item summary{
+  padding:18px 22px;cursor:pointer;
+  font-family:var(--font-serif);font-size:.98rem;font-weight:600;
+  color:var(--teal-950);
+  list-style:none;
+  display:flex;align-items:center;gap:12px;
+  transition:background .2s;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::before{
+  content:'?';flex-shrink:0;
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--teal-100);color:var(--teal-700);
+  font-family:var(--font-serif);font-size:.85rem;font-weight:700;
+  border:1px solid var(--teal-200);
+}
+.faq-item summary::after{
+  content:'＋';margin-left:auto;font-size:1.1rem;color:var(--teal-500);
+  transition:transform .25s;
+}
+.faq-item[open] summary::after{content:'−'}
+.faq-item summary:hover{background:var(--teal-50)}
+.faq-answer{
+  padding:0 22px 20px 62px;
+  font-size:.9rem;color:var(--gray-600);line-height:1.8;
+}
+@media(max-width:768px){.faq-answer{padding-left:22px}}
+
+/* ============================================================
+   PRIVACY POLICY
+   ============================================================ */
+.privacidade{
+  padding:100px 24px;
+  background:
+    linear-gradient(180deg, var(--gray-50) 0%, var(--white) 5%, var(--white) 95%, var(--gray-50) 100%);
+  border-top:3px solid var(--teal-100);
+}
+.privacidade-header{text-align:center;margin-bottom:50px}
+.privacidade-content{
+  max-width:820px;margin:0 auto;
+  background:var(--white);
+  border:var(--border-classic);
+  border-radius:var(--radius-classic);
+  box-shadow:var(--shadow-heavy);
+  padding:40px 36px;
+}
+.privacidade-content h3{
+  font-family:var(--font-serif);font-size:1.15rem;font-weight:700;
+  color:var(--teal-900);margin:28px 0 10px;
+  padding-bottom:6px;border-bottom:1px solid var(--teal-100);
+}
+.privacidade-content h3:first-child{margin-top:0}
+.privacidade-content h4{
+  font-family:var(--font-sans);font-size:.95rem;font-weight:700;
+  color:var(--gray-700);margin:18px 0 8px;
+}
+.privacidade-content p,.privacidade-content li{
+  font-size:.88rem;color:var(--gray-600);line-height:1.85;margin-bottom:10px;
+}
+.privacidade-content ul{padding-left:22px;margin-bottom:14px}
+.privacidade-content ul li{margin-bottom:4px}
+.privacidade-content .last-update{
+  font-size:.8rem;color:var(--gray-400);text-align:center;
+  margin-top:30px;padding-top:16px;border-top:1px solid var(--gray-200);
+}
+@media(max-width:768px){.privacidade-content{padding:28px 20px}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  background:var(--teal-950);
+  color:rgba(255,255,255,.6);
+  padding:60px 24px 0;
+  border-top:4px solid var(--teal-800);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.007) 2px, rgba(255,255,255,.007) 4px);
+  background-color:var(--teal-950);
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;max-width:1140px;margin:0 auto;
+}
+.footer-brand .footer-logo{
+  font-family:var(--font-serif);font-size:1.6rem;font-weight:700;
+  color:var(--white);margin-bottom:12px;
+}
+.footer-brand .footer-logo span{color:var(--teal-400)}
+.footer-brand p{font-size:.88rem;line-height:1.8;max-width:320px}
+.footer h4{
+  font-family:var(--font-serif);font-size:.95rem;font-weight:700;
+  color:var(--teal-300);margin-bottom:16px;
+  padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:8px}
+.footer ul a{
+  font-size:.85rem;color:rgba(255,255,255,.55);
+  text-decoration:none;transition:color .2s;
+}
+.footer ul a:hover{color:var(--teal-400)}
+.footer-contact li{font-size:.85rem;display:flex;align-items:flex-start;gap:8px}
+.footer-contact .fc-icon{font-size:1rem;color:var(--teal-400)}
+.footer-bottom{
+  text-align:center;padding:24px 0;margin-top:40px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:.78rem;color:rgba(255,255,255,.35);
+}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   GLOBAL POLISH — Smooth Reveal Animations
+   ============================================================ */
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════════════════════════════ -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="#hero" class="topnav-logo">Med<span>pro</span></a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle sr-only">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span></span><span></span><span></span>
+    </label>
+    <div class="topnav-links">
+      <a href="#hero">Início</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#metodologia">Metodologia</a>
+      <a href="#catalogo">Cursos</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════
+     HERO — REDESIGNED WITH IMAGE
+     ══════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="overline">✦ Medpro Educação em Saúde</span>
+      <h1>O caminho mais <em>inteligente</em> para sua carreira na saúde</h1>
+      <p class="hero-desc">Cursos online de pós-graduação e atualização profissional com certificação reconhecida, corpo docente especializado e metodologia objetiva para quem não tem tempo a perder.</p>
+      <div class="hero-buttons">
+        <a href="#catalogo" class="btn-primary">Explorar Cursos ↗</a>
+        <a href="area_aluno_login" class="btn-secondary">Área do Aluno</a>
+        <a href="#diferenciais" class="btn-secondary">Nossos Diferenciais</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-image-wrapper">
+        <img src="https://cdn.abacus.ai/images/251f03ff-7704-4413-99e8-295ba907e4ca.png" alt="Profissional de saúde Medpro" loading="eager">
+      </div>
+      <div class="hero-stats-row">
+        <div class="stat-pill">
+          <div class="number">50 mil+</div>
+          <div class="label">Alunos formados</div>
+        </div>
+        <div class="stat-pill">
+          <div class="number">98,4%</div>
+          <div class="label">Satisfação</div>
+        </div>
+        <div class="stat-pill">
+          <div class="number">24</div>
+          <div class="label">Cursos disponíveis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TÓPICOS / DIFERENCIAIS
+     ══════════════════════════════════════════════════════════════ -->
+<section class="topics" id="diferenciais">
+  <div class="topics-wrap">
+    <span class="badge-seal">Diferenciais</span>
+    <h2 class="section-heading" style="margin-top:14px">Construído por quem entende de ensino em saúde</h2>
+    <p class="section-subtitle">Cada detalhe da plataforma foi projetado para acelerar seu aprendizado e garantir resultados reais na sua carreira profissional.</p>
+    <span class="ornament-line"></span>
+    <div class="topics-list">
+      <div class="topic-item">
+        <div class="topic-num">01</div>
+        <div>
+          <h3>Questões Comentadas em Vídeo</h3>
+          <p>Resolução detalhada de provas anteriores com explicação passo a passo dos raciocínios clínicos e diagnósticos.</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <div class="topic-num">02</div>
+        <div>
+          <h3>Simulados Inteligentes</h3>
+          <p>Testes adaptativos que identificam seus pontos fracos e geram planos de estudo personalizados automaticamente.</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <div class="topic-num">03</div>
+        <div>
+          <h3>Aulas Direto ao Ponto</h3>
+          <p>Conteúdo objetivo, sem enrolação, organizado por especialidade e nível de dificuldade progressivo.</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <div class="topic-num">04</div>
+        <div>
+          <h3>Mentoria Individual</h3>
+          <p>Acompanhamento com tutores especializados para tirar dúvidas e orientar toda a sua preparação acadêmica.</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <div class="topic-num">05</div>
+        <div>
+          <h3>Acesso Vitalício</h3>
+          <p>Adquira o curso uma vez e tenha acesso permanente a todo o conteúdo, materiais e atualizações futuras.</p>
+        </div>
+      </div>
+      <div class="topic-item">
+        <div class="topic-num">06</div>
+        <div>
+          <h3>Suporte Pedagógico Rápido</h3>
+          <p>Equipe pedagógica disponível em até 24 horas para responder suas dúvidas acadêmicas com profundidade.</p>
+        </div>
+      </div>
+    </div>
+    <div class="topics-legal">
+      <div class="topics-legal-intro">
+        <h3>Sua qualificação com <span class="highlight">respaldo acadêmico</span> e reconhecimento nacional</h3>
+        <p>Na Medpro, a jornada do aluno acontece com clareza, segurança e compromisso institucional. Da matrícula à emissão do certificado, cada etapa é estruturada para oferecer confiança, transparência e uma experiência compatível com a seriedade da formação em saúde.</p>
+      </div>
+      <div class="topics-legal-points">
+        <div class="topics-legal-point">
+          <span class="topics-legal-icon">📄</span>
+          <strong>Certificação digital com processo de emissão claro e rastreável</strong>
+        </div>
+        <div class="topics-legal-point">
+          <span class="topics-legal-icon">💼</span>
+          <strong>Formação valorizada para atualização curricular e evolução profissional</strong>
+        </div>
+        <div class="topics-legal-point">
+          <span class="topics-legal-icon">🏛️</span>
+          <strong>Informações objetivas sobre carga horária, critérios de conclusão e validade aplicável</strong>
+        </div>
+      </div>
+      <div class="topics-legal-note">
+        <h4><span class="topics-legal-icon">⚖️</span> Transparência institucional em cada etapa</h4>
+        <p>Apresentamos com clareza as condições acadêmicas, os requisitos de conclusão e as orientações sobre certificação de cada programa, reforçando o compromisso da Medpro com comunicação responsável, atendimento humanizado e credibilidade no ensino em saúde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     NOSSA EQUIPE (NEW)
+     ══════════════════════════════════════════════════════════════ -->
+<section class="equipe" id="equipe">
+  <div class="equipe-content">
+    <div class="equipe-images">
+      <img src="https://cdn.abacus.ai/images/64cb00d0-248a-4506-878a-c8355f82b027.png" alt="Equipe Medpro — selfie POV corporativa" loading="lazy">
+      <img src="https://cdn.abacus.ai/images/7150ce34-9c35-4eef-9efb-3294246ab35f.png" alt="Equipe Medpro — selfie POV casual" loading="lazy">
+      <img src="images/Gemini_Generated_Image_909vsu909vsu909v.png" alt="Atendimento ao aluno Medpro" loading="lazy">
+    </div>
+    <div class="equipe-text">
+      <span class="badge-seal">Quem Somos</span>
+      <h2 class="section-heading">Conheça Nossa Equipe</h2>
+      <span class="ornament-line"></span>
+      <p>Por trás de cada aula, módulo e material da Medpro existe uma equipe de <strong>professores, pesquisadores e profissionais da saúde</strong> que vivem a prática clínica todos os dias. São médicos, enfermeiros, fisioterapeutas, nutricionistas, farmacêuticos, dentistas e psicólogos que atuam em hospitais de referência e universidades de todo o Brasil.</p>
+      <p>Nossa coordenação pedagógica é formada por <strong>mestres e doutores</strong> com décadas de experiência em ensino superior e educação a distância. Cada conteúdo é revisado, atualizado e pensado para que você absorva o máximo de conhecimento no menor tempo possível — sem perder a profundidade que a área da saúde exige.</p>
+      <div class="equipe-highlights">
+        <div class="equipe-highlight">
+          <span class="eh-icon">🎓</span>
+          <span class="eh-text">100% Mestres e Doutores</span>
+        </div>
+        <div class="equipe-highlight">
+          <span class="eh-icon">🏥</span>
+          <span class="eh-text">Atuação em hospitais de referência</span>
+        </div>
+        <div class="equipe-highlight">
+          <span class="eh-icon">📚</span>
+          <span class="eh-text">+12 anos formando profissionais</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     METODOLOGIA (NEW)
+     ══════════════════════════════════════════════════════════════ -->
+<section class="metodologia" id="metodologia">
+  <div class="container">
+    <div class="metodologia-header">
+      <span class="badge-seal">Como Funciona</span>
+      <h2 class="section-heading" style="margin-top:14px">Metodologia que Transforma</h2>
+      <p class="section-subtitle">Combinamos tecnologia, didática de excelência e suporte contínuo para que o aprendizado se encaixe na sua rotina — e faça diferença real na sua carreira.</p>
+      <span class="ornament-line"></span>
+    </div>
+
+    <div class="metodo-row">
+      <div class="metodo-img">
+        <img src="https://cdn.abacus.ai/images/943af2b6-81c7-4772-bf93-339ef25b96b2.png" alt="Médico ministrando aula prática" loading="lazy">
+      </div>
+      <div class="metodo-text">
+        <h3>Videoaulas com Especialistas Atuantes</h3>
+        <p>Todas as aulas são gravadas por profissionais que exercem a prática clínica diariamente. Isso significa que o conteúdo não é apenas teórico — cada exemplo vem de casos reais, protocolos vigentes e condutas baseadas em evidências.</p>
+        <ul class="metodo-features">
+          <li>Aulas em alta definição com duração otimizada</li>
+          <li>Exemplos de casos clínicos reais do dia a dia</li>
+          <li>Conteúdo atualizado conforme diretrizes vigentes</li>
+          <li>Acesso 24h por dia, em qualquer dispositivo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="metodo-row reverse">
+      <div class="metodo-img">
+        <img src="https://cdn.abacus.ai/images/34141dc5-b901-4b06-b06c-2a16a4d0dce1.png" alt="Aluno estudando na plataforma Medpro" loading="lazy">
+      </div>
+      <div class="metodo-text">
+        <h3>Material Didático Completo e Suporte Dedicado</h3>
+        <p>Além das videoaulas, cada módulo conta com apostilas em PDF, artigos científicos complementares, exercícios de fixação e avaliações. Nosso time pedagógico está sempre disponível para tirar suas dúvidas.</p>
+        <ul class="metodo-features">
+          <li>Apostilas e resumos em PDF para download</li>
+          <li>Simulados inteligentes com correção automática</li>
+          <li>Tutoria especializada com resposta em até 24h</li>
+          <li>Fóruns de discussão e plantões de dúvidas ao vivo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PRÁTICA PROFISSIONAL (NEW)
+     ══════════════════════════════════════════════════════════════ -->
+<section class="pratica" id="pratica">
+  <div class="pratica-content">
+    <div class="pratica-img">
+      <img src="https://cdn.abacus.ai/images/74e0f163-8378-4663-bf97-74baf4d76c3b.png" alt="Enfermeira em prática profissional" loading="lazy">
+    </div>
+    <div class="pratica-text">
+      <span class="badge-seal">Teoria + Prática</span>
+      <h2 style="margin-top:14px">Conexão Direta entre Sala de Aula e Prática Profissional</h2>
+      <p>Na Medpro, acreditamos que o conhecimento só tem valor quando pode ser aplicado. Por isso, nossos cursos são desenhados para conectar cada conceito teórico à realidade do dia a dia profissional.</p>
+      <p>Nossos módulos incluem estudos de caso baseados em situações reais de hospitais, clínicas e unidades de saúde. Você aprende protocolos, condutas e técnicas que pode aplicar imediatamente na sua rotina de trabalho — seja em UTI, consultório, UBS ou ambiente hospitalar.</p>
+      <div class="pratica-callout">
+        <p>"O objetivo não é apenas ensinar — é preparar profissionais para tomar as melhores decisões clínicas com segurança e confiança, todos os dias."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CATÁLOGO DE CURSOS
+     ══════════════════════════════════════════════════════════════ -->
+<section class="catalogo" id="catalogo">
+  <div class="container">
+    <div class="catalogo-header">
+      <span class="badge-seal">Catálogo Completo</span>
+      <h2 class="section-heading" style="margin-top:14px">Nossos Cursos de Pós-Graduação e Atualização</h2>
+      <p class="section-subtitle">28 cursos especializados em 8 áreas da saúde. Clique em cada curso para ver a descrição completa, público-alvo e todos os módulos.</p>
+      <span class="ornament-line"></span>
+    </div>
+
+    <!-- ─── ENFERMAGEM ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">🩺</span> Enfermagem
+        <span class="nicho-count">5 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Enfermagem em Terapia Intensiva (UTI Adulto)</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Capacitação avançada para enfermeiros atuarem em unidades de terapia intensiva adulto, abordando monitorização hemodinâmica, ventilação mecânica e cuidados ao paciente crítico.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Enfermeiros graduados com registro ativo no COREN</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Anatomia e Fisiologia Aplicadas ao Paciente Crítico</li>
+            <li data-num="02">Monitorização Hemodinâmica Invasiva e Não Invasiva</li>
+            <li data-num="03">Ventilação Mecânica: Modos Ventilatórios e Desmame</li>
+            <li data-num="04">Farmacologia em Terapia Intensiva (Sedação, Analgesia e Drogas Vasoativas)</li>
+            <li data-num="05">Assistência de Enfermagem em Distúrbios Hidroeletrolíticos e Ácido-Base</li>
+            <li data-num="06">Prevenção e Controle de Infecções Relacionadas à Assistência à Saúde (IRAS)</li>
+            <li data-num="07">Suporte Avançado de Vida Cardiovascular (ACLS)</li>
+            <li data-num="08">Gestão e Liderança em UTI</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Enfermagem em Urgência e Emergência</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação especializada em atendimento pré-hospitalar e intra-hospitalar de urgência e emergência, incluindo classificação de risco e protocolos de atendimento.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Enfermeiros graduados que atuam ou desejam atuar em serviços de urgência e emergência</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Política Nacional de Atenção às Urgências e Rede de Urgência e Emergência</li>
+            <li data-num="02">Classificação de Risco: Protocolo de Manchester e Sistema de Triagem</li>
+            <li data-num="03">Atendimento ao Paciente Politraumatizado (ATLS/PHTLS)</li>
+            <li data-num="04">Emergências Cardiovasculares: Síndrome Coronariana Aguda e Arritmias</li>
+            <li data-num="05">Emergências Respiratórias e Manejo de Via Aérea Difícil</li>
+            <li data-num="06">Emergências Neurológicas: AVC e Traumatismo Cranioencefálico</li>
+            <li data-num="07">Suporte Básico e Avançado de Vida (BLS e ACLS)</li>
+            <li data-num="08">Assistência de Enfermagem no Transporte Aeromédico e Terrestre</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">420h</span> Enfermagem do Trabalho</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização voltada à promoção e prevenção da saúde do trabalhador, abordando legislação, ergonomia e vigilância epidemiológica ocupacional.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 420 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Enfermeiros interessados em saúde ocupacional e segurança do trabalho</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Legislação Trabalhista e Normas Regulamentadoras (NRs)</li>
+            <li data-num="02">Epidemiologia Ocupacional e Vigilância em Saúde do Trabalhador</li>
+            <li data-num="03">Ergonomia e Análise Ergonômica do Trabalho</li>
+            <li data-num="04">Doenças Ocupacionais e Acidente de Trabalho (CAT e Nexo Causal)</li>
+            <li data-num="05">Higiene Ocupacional: Agentes Físicos, Químicos e Biológicos</li>
+            <li data-num="06">Programa de Controle Médico de Saúde Ocupacional (PCMSO)</li>
+            <li data-num="07">Primeiros Socorros e Atendimento de Emergência no Ambiente de Trabalho</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Enfermagem em Saúde da Família e Atenção Primária</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação para atuação na Estratégia Saúde da Família (ESF), com foco na promoção da saúde, prevenção de doenças e cuidado integral às comunidades.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Enfermeiros que atuam ou desejam atuar na atenção primária à saúde e ESF</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Política Nacional de Atenção Básica e Estratégia Saúde da Família</li>
+            <li data-num="02">Territorialização, Diagnóstico Comunitário e Planejamento em Saúde</li>
+            <li data-num="03">Atenção Integral à Saúde da Mulher (Pré-Natal, Puerpério e Planejamento Familiar)</li>
+            <li data-num="04">Atenção Integral à Saúde da Criança e do Adolescente</li>
+            <li data-num="05">Manejo de Doenças Crônicas na APS: Hipertensão, Diabetes e Obesidade</li>
+            <li data-num="06">Saúde Mental na Atenção Primária e Matriciamento</li>
+            <li data-num="07">Vigilância Epidemiológica e Imunização</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">400h</span> Enfermagem em Neonatologia e Pediatria</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização em cuidados intensivos e semi-intensivos ao recém-nascido e à criança, incluindo prematuridade, reanimação neonatal e humanização.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 400 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Enfermeiros graduados com interesse em neonatologia e pediatria</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (6 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Assistência ao Recém-Nascido na Sala de Parto e Reanimação Neonatal</li>
+            <li data-num="02">Cuidados de Enfermagem ao Prematuro e Recém-Nascido de Baixo Peso</li>
+            <li data-num="03">Distúrbios Respiratórios Neonatais e Ventilação Mecânica Neonatal</li>
+            <li data-num="04">Nutrição Enteral e Parenteral em Neonatologia</li>
+            <li data-num="05">Método Canguru e Humanização na UTI Neonatal</li>
+            <li data-num="06">Emergências Pediátricas e Suporte Avançado de Vida Pediátrico (PALS)</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── MEDICINA ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">⚕️</span> Medicina
+        <span class="nicho-count">5 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">480h</span> Cardiologia Clínica — Atualização Médica</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Curso de atualização em cardiologia clínica com abordagem das principais síndromes cardiovasculares, métodos diagnósticos e terapêutica baseada em evidências.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 480 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Médicos com CRM ativo, residentes e especializandos em clínica médica ou cardiologia</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Semiologia Cardiovascular e Eletrocardiografia Clínica</li>
+            <li data-num="02">Síndrome Coronariana Aguda: Diagnóstico e Manejo</li>
+            <li data-num="03">Insuficiência Cardíaca: Fisiopatologia, Classificação e Tratamento</li>
+            <li data-num="04">Arritmias Cardíacas: Reconhecimento e Conduta Terapêutica</li>
+            <li data-num="05">Hipertensão Arterial Sistêmica: Diretrizes Brasileiras Atualizadas</li>
+            <li data-num="06">Ecocardiografia e Métodos de Imagem Cardiovascular</li>
+            <li data-num="07">Valvopatias: Diagnóstico e Indicação Cirúrgica</li>
+            <li data-num="08">Prevenção Cardiovascular e Reabilitação Cardíaca</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">900h</span> Dermatologia Clínica e Estética</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Capacitação em dermatologia clínica e procedimentos estéticos, abordando diagnóstico e tratamento de dermatoses, dermatoscopia e técnicas cosmiátricas.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 900 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Médicos com CRM ativo interessados em dermatologia clínica e cosmiatria</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Anatomia e Fisiologia da Pele Aplicadas à Prática Clínica</li>
+            <li data-num="02">Dermatologia Clínica: Dermatoses Infecciosas, Inflamatórias e Autoimunes</li>
+            <li data-num="03">Dermatoscopia e Oncologia Cutânea</li>
+            <li data-num="04">Farmacologia Dermatológica e Terapêutica Tópica</li>
+            <li data-num="05">Cosmiatria: Peelings Químicos, Microagulhamento e Bioestimuladores</li>
+            <li data-num="06">Toxina Botulínica e Preenchimento com Ácido Hialurônico</li>
+            <li data-num="07">Laserterapia e Tecnologias em Dermatologia</li>
+            <li data-num="08">Dermatologia Pediátrica e Tricologia</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">480h</span> Medicina de Urgência e Emergência</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Atualização em condutas clínicas e cirúrgicas em emergência, com foco em protocolos internacionais e tomada de decisão baseada em evidências.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 480 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Médicos emergencistas, plantonistas e residentes em clínica médica ou cirurgia geral</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Abordagem Inicial do Paciente Grave: ABCDE do Trauma</li>
+            <li data-num="02">Emergências Cardiovasculares e Protocolo ACLS</li>
+            <li data-num="03">Choque: Classificação, Reconhecimento e Ressuscitação Volêmica</li>
+            <li data-num="04">Emergências Respiratórias: Asma Grave, DPOC Exacerbada e TEP</li>
+            <li data-num="05">Intoxicações Exógenas e Envenenamentos</li>
+            <li data-num="06">Procedimentos de Emergência: Acesso Venoso Central, Drenagem Torácica e Intubação</li>
+            <li data-num="07">Sepse e Infecções Graves: Protocolos Atualizados</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Medicina da Família e Comunidade</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação ampla em Medicina de Família e Comunidade com foco na atenção primária integral, abordagem centrada na pessoa e gestão da clínica.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Médicos generalistas e profissionais atuantes na Atenção Primária à Saúde</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Atenção Primária à Saúde: Princípios e Atributos Essenciais</li>
+            <li data-num="02">Método Clínico Centrado na Pessoa (MCCP)</li>
+            <li data-num="03">Abordagem Familiar: Genograma, Ecomapa e Ciclo de Vida Familiar</li>
+            <li data-num="04">Saúde da Mulher e Pré-Natal de Baixo Risco</li>
+            <li data-num="05">Manejo de Doenças Crônicas Não Transmissíveis na APS</li>
+            <li data-num="06">Saúde Mental na Atenção Primária: Depressão, Ansiedade e Uso de Substâncias</li>
+            <li data-num="07">Rastreamento e Prevenção de Doenças Baseados em Evidências</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Endocrinologia e Metabologia — Atualização Clínica</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Atualização em distúrbios endócrinos e metabólicos, com ênfase em diabetes, tireoide, obesidade e síndrome metabólica.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Médicos clínicos e endocrinologistas em busca de atualização baseada em evidências</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (6 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Diabetes Mellitus: Diagnóstico, Classificação e Manejo Farmacológico Atualizado</li>
+            <li data-num="02">Doenças da Tireoide: Hipotireoidismo, Hipertireoidismo e Nódulos Tireoidianos</li>
+            <li data-num="03">Obesidade e Síndrome Metabólica: Abordagem Multidisciplinar</li>
+            <li data-num="04">Distúrbios do Metabolismo Ósseo e Mineral: Osteoporose e Hiperparatireoidismo</li>
+            <li data-num="05">Dislipidemias e Risco Cardiovascular</li>
+            <li data-num="06">Doenças da Suprarrenal: Insuficiência Adrenal e Síndrome de Cushing</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── FISIOTERAPIA ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">🦴</span> Fisioterapia
+        <span class="nicho-count">4 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">420h</span> Fisioterapia Respiratória e Terapia Intensiva</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização em fisioterapia cardiopulmonar e cuidados ao paciente crítico em UTI, incluindo ventilação mecânica e mobilização precoce.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 420 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Fisioterapeutas graduados com registro no CREFITO</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Anatomia e Fisiologia do Sistema Respiratório Aplicadas</li>
+            <li data-num="02">Avaliação Fisioterapêutica Cardiopulmonar e Gasometria Arterial</li>
+            <li data-num="03">Técnicas de Higiene Brônquica e Reexpansão Pulmonar</li>
+            <li data-num="04">Ventilação Mecânica Invasiva e Não Invasiva: Parâmetros e Desmame</li>
+            <li data-num="05">Mobilização Precoce e Reabilitação Funcional em UTI</li>
+            <li data-num="06">Oxigenoterapia e Aerossolterapia</li>
+            <li data-num="07">Fisioterapia no Pós-Operatório de Cirurgia Torácica e Cardíaca</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Fisioterapia Traumato-Ortopédica e Desportiva</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação em reabilitação musculoesquelética e esportiva, abordando avaliação biomecânica, terapia manual e retorno ao esporte.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Fisioterapeutas que atuam ou desejam atuar em ortopedia, traumatologia e reabilitação esportiva</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Biomecânica e Cinesiologia Funcional</li>
+            <li data-num="02">Avaliação Funcional e Diagnóstico Cinético-Funcional</li>
+            <li data-num="03">Reabilitação do Ombro: Lesões do Manguito Rotador e Instabilidades</li>
+            <li data-num="04">Reabilitação do Joelho: Ligamento Cruzado Anterior e Meniscos</li>
+            <li data-num="05">Reabilitação da Coluna Vertebral: Lombalgias e Cervicalgias</li>
+            <li data-num="06">Terapia Manual: Técnicas de Mobilização e Manipulação Articular</li>
+            <li data-num="07">Retorno ao Esporte: Testes Funcionais e Critérios de Alta</li>
+            <li data-num="08">Recursos Terapêuticos: Eletrotermofototerapia e Bandagens Funcionais</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Fisioterapia Neurofuncional</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização em avaliação e reabilitação de pacientes com disfunções neurológicas, incluindo AVC, lesão medular e doenças neurodegenerativas.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Fisioterapeutas interessados em neurociências e reabilitação neurofuncional</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Neuroanatomia Funcional e Neurofisiologia Aplicada</li>
+            <li data-num="02">Avaliação Neurológica e Escalas Funcionais (Barthel, FIM, NIHSS)</li>
+            <li data-num="03">Reabilitação Pós-AVC: Espasticidade, Marcha e Equilíbrio</li>
+            <li data-num="04">Conceito Bobath e Facilitação Neuromuscular Proprioceptiva (PNF)</li>
+            <li data-num="05">Fisioterapia na Lesão Medular e Traumatismo Cranioencefálico</li>
+            <li data-num="06">Reabilitação em Doenças Neurodegenerativas: Parkinson, Esclerose Múltipla e ELA</li>
+            <li data-num="07">Tecnologia Assistiva e Órteses em Neurorreabilitação</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── NUTRIÇÃO ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">🥗</span> Nutrição
+        <span class="nicho-count">4 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Nutrição Esportiva: da Atualização à Prática</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Capacitação em nutrição aplicada ao esporte e exercício físico, abordando periodização nutricional, suplementação e necessidades por modalidade esportiva.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Nutricionistas com registro no CRN interessados em atender atletas e praticantes de atividade física</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Fisiologia do Exercício e Bioenergética Aplicada à Nutrição</li>
+            <li data-num="02">Avaliação Nutricional no Esporte: Antropometria e Composição Corporal</li>
+            <li data-num="03">Bioquímica do Exercício e Interpretação de Exames Laboratoriais</li>
+            <li data-num="04">Nutrição em Esportes de Endurance, Força e Combate</li>
+            <li data-num="05">Suplementação Esportiva: Evidências Científicas, Dosagens e Legislação</li>
+            <li data-num="06">Periodização Nutricional e Estratégias Pré, Durante e Pós-Treino</li>
+            <li data-num="07">Nutrição Esportiva em Populações Especiais: Crianças, Idosos e Vegetarianos</li>
+            <li data-num="08">Imunologia do Exercício e Microbiota Intestinal</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">420h</span> Nutrição Clínica e Funcional</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação em nutrição clínica com abordagem funcional integrativa, focada na individualização do tratamento dietoterápico e modulação de sistemas orgânicos.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 420 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Nutricionistas que atuam em clínicas, consultórios ou ambiente hospitalar</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Bases da Nutrição Funcional e Sistema ATMS (Antecedentes, Triggers, Mediadores, Sintomas)</li>
+            <li data-num="02">Avaliação Nutricional Funcional e Rastreamento Metabólico</li>
+            <li data-num="03">Nutrição e Saúde Gastrointestinal: Disbiose, Permeabilidade Intestinal e SIBO</li>
+            <li data-num="04">Modulação do Estresse Oxidativo e Inflamação Crônica</li>
+            <li data-num="05">Nutrigenômica e Nutrigenética Aplicadas à Prática Clínica</li>
+            <li data-num="06">Fitoterapia e Prescrição de Fitoterápicos pelo Nutricionista</li>
+            <li data-num="07">Dietoterapia nas Doenças Crônicas: Diabetes, Dislipidemias e Obesidade</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Nutrição Materno-Infantil</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização em nutrição aplicada à gestação, lactação, primeira infância e adolescência, com foco nos primeiros 1000 dias de vida.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Nutricionistas atuantes em saúde materno-infantil, UBS e maternidades</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (6 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Nutrição na Gestação: Necessidades Nutricionais e Suplementação</li>
+            <li data-num="02">Intercorrências Nutricionais na Gestação: Diabetes Gestacional e Pré-Eclâmpsia</li>
+            <li data-num="03">Aleitamento Materno: Fisiologia da Lactação e Manejo Clínico</li>
+            <li data-num="04">Alimentação Complementar e Introdução Alimentar (BLW e Método Participativo)</li>
+            <li data-num="05">Avaliação Nutricional Pediátrica: Curvas de Crescimento OMS</li>
+            <li data-num="06">Nutrição na Infância e Adolescência: Seletividade e Transtornos Alimentares</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── FARMÁCIA ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">💊</span> Farmácia
+        <span class="nicho-count">3 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Farmácia Clínica e Hospitalar</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização em farmácia clínica e atenção farmacêutica hospitalar, com foco no uso racional de medicamentos, farmacovigilância e segurança do paciente.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Farmacêuticos com registro no CRF que atuam ou desejam atuar em ambiente hospitalar</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Farmácia Hospitalar: Estrutura, Organização e Gestão de Serviços</li>
+            <li data-num="02">Seleção, Aquisição e Controle de Estoque de Medicamentos</li>
+            <li data-num="03">Farmácia Clínica e Atenção Farmacêutica ao Paciente Internado</li>
+            <li data-num="04">Farmacoterapia Baseada em Evidências e Protocolos Clínicos</li>
+            <li data-num="05">Farmacovigilância e Segurança do Paciente</li>
+            <li data-num="06">Nutrição Parenteral e Manipulação de Misturas Intravenosas</li>
+            <li data-num="07">Medicamentos de Controle Especial e Portaria 344/98</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Farmacologia Clínica e Terapêutica</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Atualização em farmacologia clínica aplicada, abordando interações medicamentosas, farmacocinética e prescrição farmacêutica.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Farmacêuticos clínicos, farmacêuticos de drogarias e residentes em farmácia</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (6 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Farmacocinética e Farmacodinâmica Clínica</li>
+            <li data-num="02">Farmacologia dos Sistemas Cardiovascular e Respiratório</li>
+            <li data-num="03">Farmacologia dos Anti-infecciosos: Antibióticos, Antivirais e Antifúngicos</li>
+            <li data-num="04">Interações Medicamentosas e Reações Adversas a Medicamentos (RAM)</li>
+            <li data-num="05">Prescrição Farmacêutica: Legislação, Competências e Prática Clínica</li>
+            <li data-num="06">Farmacologia Aplicada a Populações Especiais: Idosos, Gestantes e Neonatos</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">420h</span> Farmácia em Análises Clínicas e Toxicologia</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação em laboratório de análises clínicas e toxicologia, com foco em interpretação de exames, controle de qualidade e diagnóstico laboratorial.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 420 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Farmacêuticos-bioquímicos e profissionais de laboratório de análises clínicas</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Bioquímica Clínica: Glicemia, Perfil Lipídico e Marcadores Hepáticos e Renais</li>
+            <li data-num="02">Hematologia Clínica: Hemograma, Coagulação e Hemoglobinopatias</li>
+            <li data-num="03">Microbiologia Clínica: Cultura, Antibiograma e Identificação Microbiológica</li>
+            <li data-num="04">Imunologia e Sorologia: Técnicas Diagnósticas e Marcadores Imunológicos</li>
+            <li data-num="05">Urinálise e Análise de Líquidos Biológicos</li>
+            <li data-num="06">Toxicologia Clínica e Ocupacional: Drogas de Abuso e Metais Pesados</li>
+            <li data-num="07">Controle de Qualidade Interno e Externo no Laboratório Clínico</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── ODONTOLOGIA ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">🦷</span> Odontologia
+        <span class="nicho-count">3 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">480h</span> Endodontia Avançada</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Atualização em técnicas endodônticas contemporâneas, incluindo instrumentação mecanizada, obturação termoplastificada e retratamento.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 480 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Cirurgiões-dentistas com CRO ativo que atuam ou desejam especializar-se em endodontia</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Anatomia Interna Dental e Complexo Dentino-Pulpar</li>
+            <li data-num="02">Diagnóstico Pulpar e Periapical: Testes de Vitalidade e Exames por Imagem</li>
+            <li data-num="03">Preparo de Cavidades de Acesso em Dentes Anteriores, Pré-Molares e Molares</li>
+            <li data-num="04">Instrumentação Mecanizada e Rotatória: Sistemas NiTi (ProTaper, Reciproc, WaveOne)</li>
+            <li data-num="05">Odontometria, Irrigação e Medicação Intracanal</li>
+            <li data-num="06">Obturação do Sistema de Canais Radiculares: Técnicas de Condensação e Termoplásticas</li>
+            <li data-num="07">Retratamento Endodôntico e Cirurgia Parendodôntica</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">600h</span> Implantodontia Contemporânea</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação em planejamento e execução de reabilitações sobre implantes osseointegrados, abordando cirurgia, prótese sobre implante e regeneração tecidual.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 600 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Cirurgiões-dentistas com CRO ativo interessados em reabilitação oral com implantes</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Anatomia Cirúrgica e Biologia da Osseointegração</li>
+            <li data-num="02">Planejamento Digital: Tomografia Cone Beam e Guia Cirúrgico</li>
+            <li data-num="03">Técnicas Cirúrgicas para Instalação de Implantes Unitários e Múltiplos</li>
+            <li data-num="04">Regeneração Óssea Guiada e Enxertos Ósseos (Autógenos, Alógenos e Aloplásticos)</li>
+            <li data-num="05">Prótese sobre Implante: Componentes Protéticos e Fluxo Digital (CAD/CAM)</li>
+            <li data-num="06">Peri-implantite: Diagnóstico, Prevenção e Tratamento</li>
+            <li data-num="07">Carga Imediata e Protocolos All-on-Four</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Odontologia Hospitalar e Pacientes com Necessidades Especiais</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Capacitação para atendimento odontológico em ambiente hospitalar e de pacientes com necessidades especiais de saúde, incluindo pacientes oncológicos e em UTI.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Cirurgiões-dentistas interessados em atuar em equipes multidisciplinares hospitalares</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (6 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Odontologia Hospitalar: Legislação, Equipe Multidisciplinar e Biossegurança</li>
+            <li data-num="02">Atendimento Odontológico ao Paciente em Terapia Intensiva</li>
+            <li data-num="03">Manejo Odontológico do Paciente Oncológico: Mucosite, Osteorradionecrose e Xerostomia</li>
+            <li data-num="04">Atendimento a Pacientes com Deficiências Neuropsicomotoras</li>
+            <li data-num="05">Sedação Consciente e Anestesia Geral em Odontologia</li>
+            <li data-num="06">Controle de Infecção Hospitalar e Pneumonia Associada à Ventilação Mecânica (PAVM)</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── PSICOLOGIA ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">🧠</span> Psicologia
+        <span class="nicho-count">3 cursos</span>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">360h</span> Terapia Cognitivo-Comportamental (TCC)</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação em Terapia Cognitivo-Comportamental com foco no modelo de Aaron Beck, técnicas de reestruturação cognitiva e aplicação nos principais transtornos mentais.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 360 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Psicólogos com registro no CRP e profissionais de saúde mental</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (8 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Fundamentos da TCC: Modelo Cognitivo de Aaron Beck</li>
+            <li data-num="02">Conceituação Cognitiva e Formulação de Caso</li>
+            <li data-num="03">Técnicas Cognitivas: Registro de Pensamentos Disfuncionais e Reestruturação Cognitiva</li>
+            <li data-num="04">Técnicas Comportamentais: Ativação Comportamental, Exposição e Prevenção de Resposta</li>
+            <li data-num="05">TCC nos Transtornos de Ansiedade: TAG, Fobia Social e Pânico</li>
+            <li data-num="06">TCC na Depressão: Protocolo Terapêutico e Prevenção de Recaída</li>
+            <li data-num="07">TCC nos Transtornos de Personalidade: Terapia do Esquema de Jeffrey Young</li>
+            <li data-num="08">TCC na Infância e Adolescência</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">420h</span> Neuropsicologia Clínica</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Especialização em avaliação e reabilitação neuropsicológica, abordando instrumentos psicométricos, diagnóstico diferencial e intervenção cognitiva.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 420 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Psicólogos interessados em avaliação cognitiva, neurociências e reabilitação neuropsicológica</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (7 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Neuroanatomia Funcional e Bases Biológicas do Comportamento</li>
+            <li data-num="02">Avaliação Neuropsicológica: Instrumentos e Baterias de Testes (WAIS, RAVLT, Stroop, Trail Making)</li>
+            <li data-num="03">Funções Executivas, Atenção e Memória: Avaliação e Reabilitação</li>
+            <li data-num="04">Neuropsicologia do Envelhecimento e Demências (Alzheimer, Vascular, Frontotemporal)</li>
+            <li data-num="05">Neuropsicologia Infantil: TDAH, Dislexia e Transtornos do Neurodesenvolvimento</li>
+            <li data-num="06">Reabilitação Neuropsicológica: Estratégias Compensatórias e Estimulação Cognitiva</li>
+            <li data-num="07">Laudo Neuropsicológico: Estrutura, Redação e Aspectos Éticos</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── GESTÃO EM SAÚDE ─── -->
+    <div class="nicho-section">
+      <div class="nicho-title">
+        <span class="nicho-icon">🏥</span> Gestão em Saúde
+        <span class="nicho-count">4 cursos</span>
+      </div>
+      <div class="nicho-launch-wrap">
+        <div class="nicho-launch-copy">
+          <span class="nicho-launch-badge">Lançamento do Ano</span>
+          <span class="nicho-launch-text"><strong>Trilha estratégica em destaque</strong> com cursos práticos para performance, segurança operacional e crescimento sustentável na saúde.</span>
+        </div>
+        <a href="#catalogo" class="nicho-launch-cta">Quero Ver os Lançamentos ↗</a>
+      </div>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">6h</span> Atendimento de Excelência na Área da Saúde 2026</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Formação prática para clínicas, consultórios e serviços de saúde que desejam elevar o padrão de atendimento, fortalecer a experiência do paciente e estruturar processos com mais humanização, eficiência e segurança.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Carga horária:</strong> 6 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Recepcionistas, profissionais administrativos, gestores de clínicas, equipes assistenciais e profissionais da saúde que atuam no relacionamento com pacientes</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (5 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Fundamentos do Atendimento de Excelência em Saúde
+              <br>Diferença entre atendimento bom e atendimento de excelência
+              <br>A importância da experiência do paciente na fidelização e recomendação
+              <br>Perfil do profissional de alta performance no setor saúde
+              <br>Mapa da jornada do paciente, do primeiro contato à alta
+            </li>
+            <li data-num="02">Comunicação Assertiva e Empática
+              <br>Técnicas de comunicação verbal e não verbal
+              <br>Escuta ativa e validação emocional do paciente
+              <br>Como falar sobre valores, procedimentos e orçamentos com clareza e segurança
+              <br>Manejo de pacientes ansiosos, irritados ou exigentes
+              <br>Comunicação com familiares e acompanhantes
+            </li>
+            <li data-num="03">Padrões de Excelência Operacional
+              <br>Protocolos de recepção, triagem e acolhimento
+              <br>Uso correto do WhatsApp e do telefone na clínica
+              <br>Tempo de espera, pontualidade e fluxo de atendimento
+              <br>Organização da recepção e das salas para transmitir excelência
+              <br>LGPD aplicada à rotina de atendimento
+            </li>
+            <li data-num="04">Experiência do Paciente e Fidelização
+              <br>Técnicas de humanização no atendimento
+              <br>Personalização do cuidado e criação de vínculo
+              <br>Recuperação de pacientes insatisfeitos com abordagem estratégica
+              <br>Estratégias práticas de fidelização e upsell ético
+              <br>Medição da satisfação com NPS, pesquisa rápida e feedback em tempo real
+            </li>
+            <li data-num="05">Simulações Práticas e Plano de Ação
+              <br>Simulações reais de atendimento difícil, reclamações e pacientes ansiosos
+              <br>Construção do padrão de atendimento de excelência da clínica
+              <br>Checklist diário de excelência para recepção e equipe assistencial
+              <br>Plano de implementação de 30 dias para a rotina da clínica
+            </li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">6h</span> Administração de Alto Desempenho em Clínicas</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Curso intensivo, 100% online e prático, desenvolvido para gestores e proprietários que desejam estruturar clínicas mais rentáveis, organizadas e preparadas para crescer com eficiência.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Duração:</strong> 6 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">💻</span> <strong>Formato:</strong> 100% online e prático</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">💰</span> <strong>Investimento:</strong> De R$ 297,00 por R$ 169,00</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏳</span> <strong>Oferta válida:</strong> Somente até domingo, 17/05</span>
+          </div>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Gestores de clínicas, proprietários, administradores, coordenadores e profissionais responsáveis pela operação e crescimento de serviços de saúde</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (5 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Fundamentos da Administração de Alto Desempenho
+              <br>O que diferencia uma clínica comum de uma clínica de alto desempenho
+              <br>Os 6 pilares da gestão moderna em saúde: financeiro, operacional, marketing, pessoas, experiência do paciente e estratégia
+              <br>Diagnóstico rápido para avaliar a saúde da clínica em 30 minutos
+              <br>Legislação essencial para clínicas: ANVISA, CFM, Vigilância Sanitária e LGPD aplicada
+            </li>
+            <li data-num="02">Gestão Financeira e Rentabilidade
+              <br>Precificação inteligente de procedimentos e pacotes
+              <br>Controle de custos e ponto de equilíbrio mensal
+              <br>Fluxo de caixa prático para clínicas
+              <br>Redução de glosas e aumento da taxa de conversão de orçamentos
+              <br>Indicadores financeiros que realmente importam: ticket médio, absenteísmo e ROI por especialidade
+            </li>
+            <li data-num="03">Marketing, Vendas e Atração de Pacientes
+              <br>Estratégias de marketing digital de baixo custo para clínicas
+              <br>Como transformar sua agenda em 70% a 80% de ocupação
+              <br>Funil de vendas médico: captação, agendamento, comparecimento e fidelização
+              <br>Google Meu Negócio, WhatsApp Business e Instagram para clínicas
+              <br>Construção de autoridade e reputação online
+            </li>
+            <li data-num="04">Liderança de Equipe e Operação de Alto Desempenho
+              <br>Recrutamento, seleção e retenção de profissionais de saúde
+              <br>Gestão de desempenho e produtividade da equipe
+              <br>5S e Lean Health: organização e eliminação de desperdícios na clínica
+              <br>Cultura de alto desempenho e engajamento da equipe
+              <br>Comunicação eficiente e redução de conflitos internos
+            </li>
+            <li data-num="05">Simulações Práticas e Planejamento Estratégico
+              <br>Simulação: montagem do plano de crescimento da clínica em 90 dias
+              <br>Análise de cenários reais: falta de caixa, queda de pacientes e problemas com equipe
+              <br>Ferramentas de gestão: dashboard simples e OKRs para saúde
+              <br>Elaboração do plano de ação individual entregue no curso
+            </li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">6h</span> Controle Interno de Clínicas e Consultórios 2026</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Curso prático para estruturar controles internos mais seguros, reduzir riscos operacionais e financeiros e fortalecer a conformidade de clínicas e consultórios com foco em eficiência e governança.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Duração:</strong> 6 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">💻</span> <strong>Formato:</strong> 100% online e prático</span>
+          </div>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Gestores de clínicas, proprietários, administradores, coordenadores, profissionais financeiros e equipes responsáveis por controles, compliance e operação em serviços de saúde</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (5 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Fundamentos do Controle Interno em Saúde
+              <br>O que é controle interno e por que ele é essencial em clínicas e consultórios
+              <br>Principais riscos internos: desvios, fraudes, desperdícios e não conformidades
+              <br>Os 5 componentes do controle interno adaptados à saúde com base no COSO simplificado
+              <br>Diagnóstico rápido para identificar falhas de controle em 20 minutos
+            </li>
+            <li data-num="02">Controle Financeiro e Patrimonial
+              <br>Controle de caixa, contas a pagar e a receber e conciliações bancárias
+              <br>Prevenção de desvios financeiros e glosas
+              <br>Gestão de estoque de medicamentos, materiais e insumos
+              <br>Precificação, faturamento e controle de convênios
+              <br>Indicadores financeiros de controle: ticket médio, custos fixos e variáveis e ponto de equilíbrio
+            </li>
+            <li data-num="03">Processos Operacionais e Compliance
+              <br>Padronização de processos em recepção, consultório, farmácia interna e alta
+              <br>LGPD na prática: controle de dados de pacientes
+              <br>Normas da ANVISA, Vigilância Sanitária e CFM aplicadas ao dia a dia
+              <br>Controle de acesso a medicamentos controlados e sala de procedimentos
+              <br>Checklist de conformidade sanitária e segurança do paciente
+            </li>
+            <li data-num="04">Gestão de Equipe e Prevenção de Riscos
+              <br>Separação de funções e limites de autorização
+              <br>Controle de ponto, produtividade e jornada de trabalho
+              <br>Como evitar fraudes internas com funcionários, prestadores e fornecedores
+              <br>Auditoria interna simples e monitoramento contínuo
+              <br>Cultura de integridade e boas práticas de governança
+            </li>
+            <li data-num="05">Implementação Prática e Ferramentas
+              <br>Montagem do sistema de controle interno em 30 dias
+              <br>Planilhas e dashboards de controle fornecidos no curso
+              <br>Simulações de cenários: desvio financeiro, erro de estoque e não conformidade
+              <br>Plano de ação personalizado para a clínica ou consultório
+              <br>Revisão e melhoria contínua dos controles
+            </li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="curso-card">
+        <summary><span class="curso-ch">6h</span> (ECCL) Especialização para Enfermagem em Complexos Comerciais LGPS 2026</summary>
+        <div class="curso-body">
+          <p class="curso-desc">Capacitação prática para profissionais de enfermagem que atuam ou desejam atuar em complexos comerciais, com foco em primeiros atendimentos, resposta a emergências, integração com equipes de segurança e protocolos assistenciais em ambientes de grande circulação.</p>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏱</span> <strong>Duração:</strong> 6 horas</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">💻</span> <strong>Formato:</strong> 100% online e prático</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">💰</span> <strong>Investimento:</strong> De R$ 459,00 por R$ 169,00</span>
+            <span class="curso-meta-item"><span class="curso-meta-icon">⏳</span> <strong>Oferta válida:</strong> Somente até domingo, 17/05</span>
+          </div>
+          <div class="curso-meta">
+            <span class="curso-meta-item"><span class="curso-meta-icon">👤</span> <strong>Público-alvo:</strong> Enfermeiros e profissionais de enfermagem que atuam em ambulatórios, salas de primeiros socorros, brigadas e operações de saúde em shopping centers e outros complexos comerciais</span>
+          </div>
+          <div class="modulos-title">Módulos do Curso (5 módulos)</div>
+          <ol class="modulos-list">
+            <li data-num="01">Introdução ao Atendimento em Shopping Center
+              <br>A. O ambiente do shopping: características e riscos específicos em escadas rolantes, elevadores, áreas de alimentação, lojas, estacionamentos e grandes eventos
+              <br>Legislação básica de segurança e saúde em ambientes comerciais de grande porte
+              <br>B. Estrutura e logística: localização e organização da sala de primeiros socorros ou ambulatório do shopping
+              <br>Composição e manutenção do kit de primeiros socorros e do desfibrilador externo automático (DEA)
+              <br>Protocolos de comunicação interna com segurança, administração e brigada de incêndio, e externa com SAMU, Bombeiros e Polícia
+              <br>C. Ética e aspectos legais: dever de socorro, limites de atuação do enfermeiro e documentação dos atendimentos
+            </li>
+            <li data-num="02">Suporte Básico e Avançado de Vida
+              <br>A. Abordagem inicial e cinematográfica do trauma: avaliação da cena, biossegurança e abordagem ABCDE primária
+              <br>B. Parada cardiorrespiratória: reconhecimento rápido, RCP de alta qualidade em adultos, crianças e lactentes e uso do DEA
+              <br>C. Emergências respiratórias: OVACE com manobra de Heimlich, crises asmáticas e reações alérgicas graves, incluindo anafilaxia
+            </li>
+            <li data-num="03">Trauma e Lesões Comuns no Shopping
+              <br>A. Traumatismos músculo-esqueléticos: fraturas, luxações, entorses, imobilização provisória, uso de talas e tipos de transporte
+              <br>Lesões em escadas rolantes e elevadores
+              <br>B. Ferimentos e hemorragias: lacerações, contusões, controle de hemorragias, uso de torniquete quando necessário e queimaduras químicas, térmicas e elétricas
+              <br>C. Traumatismo crânio-encefálico: reconhecimento de sinais de alerta, avaliação neurológica rápida e cuidados com a coluna cervical
+            </li>
+            <li data-num="04">Emergências Clínicas e Comportamentais
+              <br>A. Emergências clínicas comuns: crises convulsivas, hipoglicemia, hiperglicemia, síncope e lipotimia
+              <br>B. Intoxicações e acidentes: intoxicações alimentares, envenenamento químico, acidentes ofídicos e picadas de insetos
+              <br>C. Abordagem de crises psicossociais: manejo inicial de crises de ansiedade, pânico e situações de surto ou agressividade em integração com a segurança
+            </li>
+            <li data-num="05">Simulação Realística e Trabalho em Equipe
+              <br>A. Simulações de cenários: PCR na praça de alimentação, queda em escada rolante com múltiplas vítimas e crise convulsiva em loja lotada
+              <br>B. Integração multiprofissional: comunicação com a equipe de segurança, passagem de caso para suporte avançado e transporte seguro da vítima dentro do shopping
+            </li>
+          </ol>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DEPOIMENTOS (NEW)
+     ══════════════════════════════════════════════════════════════ -->
+<section class="depoimentos" id="depoimentos">
+  <div class="container">
+    <div class="depoimentos-header">
+      <span class="badge-seal">Depoimentos</span>
+      <h2 class="section-heading" style="margin-top:14px">O que nossos alunos dizem</h2>
+      <p class="section-subtitle">Mais de 50 mil profissionais da saúde já transformaram suas carreiras com a Medpro. Veja o que alguns deles têm a dizer.</p>
+      <span class="ornament-line" style="background:linear-gradient(90deg,var(--teal-400),var(--teal-300))"></span>
+    </div>
+    <div class="depoimentos-grid">
+      <div class="depoimento-card">
+        <img class="depoimento-avatar" src="https://cdn.abacus.ai/images/4ee08951-6f50-493c-8702-382866454dd8.png" alt="Depoimento — Dra. Camila Rodrigues" loading="lazy">
+        <div class="depoimento-quote">Fiz a pós em Enfermagem em UTI e posso dizer que mudou completamente minha prática profissional. O conteúdo é extremamente atualizado e os professores sabem do que estão falando — são profissionais que vivem a rotina hospitalar. Recomendo demais!</div>
+        <div class="depoimento-name">Camila Rodrigues</div>
+        <div class="depoimento-role">Enfermeira — UTI Adulto, São Paulo/SP</div>
+        <div class="depoimento-stars">★★★★★</div>
+      </div>
+      <div class="depoimento-card">
+        <img class="depoimento-avatar" src="https://cdn.abacus.ai/images/170d46d0-a581-473c-97e2-9df9aafdb38c.png" alt="Depoimento — Dr. Rafael Mendes" loading="lazy">
+        <div class="depoimento-quote">Eu precisava me atualizar em cardiologia sem parar de trabalhar, e a Medpro foi a solução perfeita. Estudei no meu ritmo, tirei dúvidas com tutores excelentes e o certificado me ajudou na progressão de carreira. Investimento que vale cada centavo.</div>
+        <div class="depoimento-name">Rafael Mendes</div>
+        <div class="depoimento-role">Médico Cardiologista — Belo Horizonte/MG</div>
+        <div class="depoimento-stars">★★★★★</div>
+      </div>
+      <div class="depoimento-card">
+        <img class="depoimento-avatar" src="https://cdn.abacus.ai/images/1fdc428f-e416-47c8-8b93-291fd5e33a80.png" alt="Depoimento — Dra. Fernanda Lima" loading="lazy">
+        <div class="depoimento-quote">A especialização em Nutrição Clínica da Medpro superou minhas expectativas. O material didático é riquíssimo, os simulados me ajudaram muito e a tutoria respondeu todas as minhas dúvidas rapidamente. Hoje me sinto muito mais segura nos atendimentos.</div>
+        <div class="depoimento-name">Fernanda Lima</div>
+        <div class="depoimento-role">Nutricionista Clínica — Curitiba/PR</div>
+        <div class="depoimento-stars">★★★★★</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CERTIFICAÇÃO (NEW)
+     ══════════════════════════════════════════════════════════════ -->
+<section class="certificacao" id="certificacao">
+  <div class="certificacao-content">
+    <div class="certificacao-img">
+      <img src="images/Formada.png" alt="Aluna formada recebendo certificado Medpro" loading="lazy">
+    </div>
+    <div class="certificacao-text">
+      <span class="badge-seal">Certificação</span>
+      <h2 style="margin-top:14px">Certificado com Validade Nacional e Reconhecimento no Mercado</h2>
+      <p>Ao concluir seu curso na Medpro, você recebe um certificado de especialização emitido em parceria com instituições de ensino superior credenciadas pelo MEC, válido em todo o território nacional.</p>
+      <p>Nosso certificado é aceito em concursos públicos, processos seletivos, provas de título e progressões de carreira. O documento possui registro institucional e pode ser verificado eletronicamente — garantindo total autenticidade e segurança para o seu currículo.</p>
+      <div class="cert-badges">
+        <div class="cert-badge">
+          <span class="cb-icon">🏛️</span>
+          <span class="cb-text">Parceria com IES<br>credenciadas pelo MEC</span>
+        </div>
+        <div class="cert-badge">
+          <span class="cb-icon">📜</span>
+          <span class="cb-text">Aceito em concursos<br>e progressões</span>
+        </div>
+        <div class="cert-badge">
+          <span class="cb-icon">🔐</span>
+          <span class="cb-text">Verificação<br>eletrônica</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FAQ
+     ══════════════════════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="badge-seal">Perguntas Frequentes</span>
+      <h2 class="section-heading" style="margin-top:14px">Dúvidas sobre nossos cursos?</h2>
+      <p class="section-subtitle">Reunimos as perguntas mais comuns dos nossos alunos. Se sua dúvida não estiver aqui, entre em contato com nossa equipe.</p>
+      <span class="ornament-line"></span>
+    </div>
+    <div class="faq-grid">
+
+      <details class="faq-item">
+        <summary>Os cursos da Medpro são reconhecidos pelo MEC?</summary>
+        <div class="faq-answer">
+          <p>Os cursos de pós-graduação <em>lato sensu</em> da Medpro são oferecidos em parceria com instituições de ensino superior devidamente credenciadas pelo Ministério da Educação (MEC), conforme a Resolução CNE/CES nº 1/2018. Ao concluir o curso, o aluno recebe um certificado de especialização emitido pela instituição parceira, válido em todo o território nacional. Já os cursos de atualização e aperfeiçoamento, por sua natureza, não requerem autorização específica do MEC, mas seguem rigorosos padrões de qualidade acadêmica.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Como funciona a metodologia dos cursos online?</summary>
+        <div class="faq-answer">
+          <p>Nossos cursos utilizam uma plataforma de ensino a distância (EAD) com ambiente virtual de aprendizagem (AVA) moderno e intuitivo. O conteúdo é disponibilizado em videoaulas gravadas por profissionais especialistas, material didático em PDF, artigos científicos complementares, exercícios de fixação e avaliações ao final de cada módulo. O aluno estuda no seu próprio ritmo, podendo acessar o conteúdo 24 horas por dia, 7 dias por semana, de qualquer dispositivo com acesso à internet.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Qual é a validade do certificado emitido?</summary>
+        <div class="faq-answer">
+          <p>O certificado de conclusão dos cursos de pós-graduação <em>lato sensu</em> tem validade nacional e é aceito em concursos públicos, progressões de carreira, provas de título e processos seletivos em todo o Brasil. O documento é emitido com registro institucional e pode ser verificado eletronicamente.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Quais são as formas de pagamento disponíveis?</summary>
+        <div class="faq-answer">
+          <p>Oferecemos diversas opções de pagamento: cartão de crédito (em até 12 parcelas sem juros), boleto bancário (à vista ou parcelado em até 6 vezes), PIX (com desconto especial de 10% para pagamento à vista) e transferência bancária. Para empresas e grupos de alunos (acima de 5 matrículas), oferecemos pacotes corporativos com valores diferenciados.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Posso cancelar minha matrícula e solicitar reembolso?</summary>
+        <div class="faq-answer">
+          <p>Sim. De acordo com o Código de Defesa do Consumidor (Art. 49), o aluno tem o direito de desistência no prazo de 7 (sete) dias corridos a contar da data da contratação ou do início do acesso ao curso. Nesse caso, o reembolso é integral. Após o prazo de 7 dias, o cancelamento pode ser solicitado, e o valor do reembolso será calculado proporcionalmente ao conteúdo ainda não acessado, descontada uma taxa administrativa de 20%.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Os cursos possuem tutoria ou suporte ao aluno?</summary>
+        <div class="faq-answer">
+          <p>Todos os nossos cursos contam com suporte pedagógico especializado. Cada turma possui tutores com formação na área que ficam disponíveis para esclarecer dúvidas acadêmicas em até 24 horas úteis. Além da tutoria reativa, oferecemos plantões de dúvidas ao vivo periodicamente, nos quais os alunos podem interagir diretamente com os professores.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Quanto tempo tenho para concluir o curso?</summary>
+        <div class="faq-answer">
+          <p>Cursos de pós-graduação <em>lato sensu</em> possuem prazo mínimo de 6 meses e máximo de 18 meses para conclusão, incluindo a entrega do TCC quando exigido. Cursos de atualização possuem prazo máximo de 12 meses. Após a conclusão, o acesso ao conteúdo é vitalício.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Preciso de algum requisito técnico para acessar a plataforma?</summary>
+        <div class="faq-answer">
+          <p>A plataforma é acessível por qualquer navegador moderno em computadores, tablets e smartphones. Recomendamos uma conexão de internet de pelo menos 5 Mbps. Não é necessário instalar nenhum software adicional. Para quem deseja estudar offline, é possível baixar os materiais em PDF e, em cursos selecionados, fazer o download das videoaulas no aplicativo móvel.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Como funciona o Trabalho de Conclusão de Curso (TCC)?</summary>
+        <div class="faq-answer">
+          <p>Nos cursos de pós-graduação <em>lato sensu</em>, o TCC é requisito obrigatório. O trabalho consiste na elaboração de um artigo científico, estudo de caso ou revisão de literatura sob orientação de um professor-orientador. A defesa é realizada online, por videoconferência, perante banca examinadora. Cursos de atualização não exigem TCC.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Os cursos valem pontos para progressão funcional ou concursos?</summary>
+        <div class="faq-answer">
+          <p>Sim. Os certificados são amplamente aceitos para pontuação em concursos públicos, processos seletivos e planos de carreira de instituições públicas e privadas de saúde. A pontuação específica depende do edital ou regulamento de cada órgão. Recomendamos que o aluno verifique os requisitos do edital.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Vocês oferecem desconto para ex-alunos ou indicações?</summary>
+        <div class="faq-answer">
+          <p>Sim! Ex-alunos recebem automaticamente 15% de desconto em qualquer novo curso. Nosso programa "Indique e Ganhe" oferece 10% de desconto para quem indica um novo aluno — e o indicado também recebe 10%. Para profissionais da rede pública de saúde (SUS), oferecemos condições especiais mediante comprovação de vínculo.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Os professores são profissionais atuantes na área da saúde?</summary>
+        <div class="faq-answer">
+          <p>Todo o corpo docente é composto por profissionais com titulação mínima de mestre ou doutor, com experiência comprovada na prática clínica/assistencial e no ensino superior. Nossos professores atuam em hospitais de referência, universidades federais e centros de pesquisa em todo o Brasil.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>A Medpro emite nota fiscal das matrículas?</summary>
+        <div class="faq-answer">
+          <p>Sim. Todas as matrículas geram nota fiscal de serviços (NFS-e) emitida eletronicamente. A nota fiscal pode ser utilizada para declaração de Imposto de Renda, reembolso por empregadores e comprovação de investimento em capacitação profissional.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Posso acessar os cursos de qualquer lugar do mundo?</summary>
+        <div class="faq-answer">
+          <p>Sim. Como todos os nossos cursos são 100% online, eles podem ser acessados de qualquer lugar do mundo com conexão à internet. A plataforma funciona em qualquer fuso horário e todo o material fica disponível sob demanda. O certificado é emitido digitalmente, podendo também ser solicitado em formato físico.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DIVIDER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     POLÍTICA DE PRIVACIDADE
+     ══════════════════════════════════════════════════════════════ -->
+<section class="privacidade" id="privacidade">
+  <div class="container">
+    <div class="privacidade-header">
+      <span class="badge-seal">Transparência &amp; Segurança</span>
+      <h2 class="section-heading" style="margin-top:14px">Política de Privacidade</h2>
+      <p class="section-subtitle">Saiba como a Medpro coleta, utiliza, armazena e protege seus dados pessoais em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+      <span class="ornament-line"></span>
+    </div>
+    <div class="privacidade-content">
+
+      <h3>1. Introdução e Identificação do Controlador</h3>
+      <p>A presente Política de Privacidade tem por objetivo informar aos usuários, alunos e visitantes do site da <strong>Medpro Educação em Saúde Ltda.</strong> ("Medpro", "nós" ou "Controlador"), inscrita no CNPJ/MF sob o nº 60.260.243/0001-90, com sede na cidade de São Paulo, Estado de São Paulo, sobre o tratamento de dados pessoais realizado por meio desta plataforma e dos serviços educacionais oferecidos.</p>
+      <p>Esta Política foi elaborada em conformidade com a <strong>Lei nº 13.709/2018 — Lei Geral de Proteção de Dados Pessoais (LGPD)</strong>, o Marco Civil da Internet (Lei nº 12.965/2014) e demais normas aplicáveis à proteção de dados pessoais no Brasil.</p>
+
+      <h3>2. Definições</h3>
+      <p>Para os fins desta Política, consideram-se as seguintes definições, em consonância com o Art. 5º da LGPD:</p>
+      <ul>
+        <li><strong>Dado Pessoal:</strong> informação relacionada a pessoa natural identificada ou identificável.</li>
+        <li><strong>Dado Pessoal Sensível:</strong> dado pessoal sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato, dado referente à saúde ou à vida sexual, dado genético ou biométrico.</li>
+        <li><strong>Titular:</strong> pessoa natural a quem se referem os dados pessoais que são objeto de tratamento.</li>
+        <li><strong>Controlador:</strong> pessoa natural ou jurídica a quem competem as decisões referentes ao tratamento de dados pessoais — neste caso, a Medpro.</li>
+        <li><strong>Operador:</strong> pessoa natural ou jurídica que realiza o tratamento de dados pessoais em nome do controlador.</li>
+        <li><strong>Tratamento:</strong> toda operação realizada com dados pessoais.</li>
+        <li><strong>Consentimento:</strong> manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.</li>
+        <li><strong>Encarregado (DPO):</strong> pessoa indicada pelo controlador para atuar como canal de comunicação entre o controlador, os titulares dos dados e a ANPD.</li>
+      </ul>
+
+      <h3>3. Dados Pessoais Coletados</h3>
+      <h4>3.1. Dados fornecidos diretamente pelo titular</h4>
+      <p>Ao se cadastrar, realizar matrícula ou entrar em contato conosco, o titular poderá fornecer:</p>
+      <ul>
+        <li>Nome completo, CPF e/ou RG, data de nascimento;</li>
+        <li>Endereço de e-mail, número de telefone;</li>
+        <li>Endereço residencial ou comercial completo;</li>
+        <li>Dados acadêmicos e profissionais;</li>
+        <li>Dados financeiros para processamento de pagamentos (tratados por operadores PCI-DSS);</li>
+        <li>Fotografia de documento de identidade (quando necessário).</li>
+      </ul>
+      <h4>3.2. Dados coletados automaticamente</h4>
+      <ul>
+        <li>Endereço IP, tipo de navegador, sistema operacional;</li>
+        <li>Páginas acessadas, tempo de permanência e fluxo de navegação;</li>
+        <li>Dados de progresso acadêmico;</li>
+        <li>Cookies e tecnologias similares de rastreamento.</li>
+      </ul>
+
+      <h3>4. Finalidades do Tratamento de Dados</h3>
+      <ul>
+        <li><strong>Execução contratual:</strong> processamento de matrículas, disponibilização de conteúdo, emissão de certificados;</li>
+        <li><strong>Cumprimento de obrigação legal:</strong> registros acadêmicos, notas fiscais, obrigações tributárias;</li>
+        <li><strong>Comunicação institucional:</strong> informações sobre o curso, prazos e atualizações;</li>
+        <li><strong>Marketing:</strong> comunicações sobre novos cursos e promoções, mediante consentimento;</li>
+        <li><strong>Melhoria da plataforma:</strong> análise de dados para otimizar a experiência;</li>
+        <li><strong>Segurança:</strong> verificação de identidade e prevenção de fraudes;</li>
+        <li><strong>Pesquisa e estatística:</strong> dados agregados e anonimizados.</li>
+      </ul>
+
+      <h3>5. Bases Legais para o Tratamento</h3>
+      <p>Todo tratamento encontra amparo no Art. 7º da LGPD: consentimento, cumprimento de obrigação legal, execução de contrato, exercício regular de direitos e legítimo interesse do controlador.</p>
+
+      <h3>6. Compartilhamento de Dados</h3>
+      <p>A Medpro poderá compartilhar dados com: instituições de ensino parceiras, operadores de pagamento (PCI-DSS), prestadores de serviços de tecnologia, autoridades públicas e conselhos profissionais. Em nenhuma hipótese comercializamos dados pessoais a terceiros.</p>
+
+      <h3>7. Cookies e Tecnologias de Rastreamento</h3>
+      <p>Utilizamos cookies essenciais, de desempenho (Google Analytics com IP anonimizado), de funcionalidade e de marketing (apenas com consentimento). O usuário pode gerenciar preferências a qualquer momento.</p>
+
+      <h3>8. Armazenamento e Segurança dos Dados</h3>
+      <p>Dados armazenados em servidores seguros (Brasil e EUA) com criptografia TLS/SSL e AES-256, controle de acesso RBAC com MFA, monitoramento contínuo, backups automatizados e políticas de retenção.</p>
+
+      <h3>9. Retenção de Dados</h3>
+      <ul>
+        <li><strong>Dados acadêmicos:</strong> prazo indeterminado (obrigação legal);</li>
+        <li><strong>Dados financeiros:</strong> mínimo 5 anos (legislação tributária);</li>
+        <li><strong>Dados de navegação:</strong> até 26 meses;</li>
+        <li><strong>Dados de marketing:</strong> enquanto houver consentimento.</li>
+      </ul>
+
+      <h3>10. Direitos do Titular</h3>
+      <p>Conforme Arts. 17 a 22 da LGPD: confirmação de tratamento, acesso, correção, anonimização/bloqueio/eliminação, portabilidade, informação sobre compartilhamento e revogação do consentimento. Contato via <strong>privacidade@medpro.com.br</strong>.</p>
+
+      <h3>11. Transferência Internacional de Dados</h3>
+      <p>Quando necessário, realizamos transferências em conformidade com o Art. 33 da LGPD, adotando cláusulas contratuais padrão.</p>
+
+      <h3>12. Menores de Idade</h3>
+      <p>Nossos serviços são destinados a maiores de 18 anos. Dados de menores coletados inadvertidamente serão eliminados imediatamente.</p>
+
+      <h3>13. Alterações nesta Política</h3>
+      <p>A Medpro pode atualizar esta Política a qualquer momento, comunicando alterações via site e e-mail quando apropriado.</p>
+
+      <h3>14. Encarregado de Proteção de Dados (DPO)</h3>
+      <ul>
+        <li><strong>Nome:</strong> Departamento de Privacidade e Proteção de Dados — Medpro</li>
+        <li><strong>E-mail:</strong> privacidade@medpro.com.br</li>
+        <li><strong>Endereço:</strong> Av. Paulista, 1.000, 10º andar, Bela Vista, São Paulo/SP — CEP 01310-100</li>
+      </ul>
+
+      <p class="last-update">Última atualização: 15 de abril de 2026 — Versão 1.0</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════════ -->
+<footer class="footer" id="contato">
+  <div class="footer-grid container">
+    <div class="footer-brand">
+      <div class="footer-logo">Med<span>pro</span></div>
+      <p>Educação em saúde de excelência. Desde 2012 formando profissionais preparados para os desafios do mercado de trabalho na área da saúde com metodologia objetiva e corpo docente de referência nacional.</p>
+      <p style="font-size: 0.85rem; color: rgba(255,255,255,.5); margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.1);">CNPJ: 60.260.243/0001-90</p>
+    </div>
+    <div>
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#equipe">Nossa Equipe</a></li>
+        <li><a href="#metodologia">Metodologia</a></li>
+        <li><a href="#catalogo">Catálogo de Cursos</a></li>
+        <li><a href="#faq">Perguntas Frequentes</a></li>
+        <li><a href="#privacidade">Política de Privacidade</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Áreas de Ensino</h4>
+      <ul>
+        <li><a href="#catalogo">Enfermagem</a></li>
+        <li><a href="#catalogo">Medicina</a></li>
+        <li><a href="#catalogo">Fisioterapia</a></li>
+        <li><a href="#catalogo">Nutrição</a></li>
+        <li><a href="#catalogo">Farmácia</a></li>
+        <li><a href="#catalogo">Odontologia</a></li>
+        <li><a href="#catalogo">Psicologia</a></li>
+        <li><a href="#catalogo">Gestão em Saúde</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul class="footer-contact">
+        <li><span class="fc-icon">✉</span> contato@medpro.com.br</li>
+        <li><span class="fc-icon">📍</span> Av. Paulista, 1.000, 10º andar — São Paulo/SP</li>
+        <li><span class="fc-icon">🕐</span> Seg a Sex, 08h às 18h</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2012–2026 Medpro Educação em Saúde Ltda. — CNPJ 60.260.243/0001-90 — Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scroll reveal animation -->
+<script>
+(function(){
+  const faders = document.querySelectorAll('.topic-item,.topics-legal,.topics-legal-point,.curso-card,.faq-item,.depoimento-card,.cert-badge,.equipe-highlight');
+  faders.forEach(el => el.classList.add('fade-in'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)} });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  faders.forEach(el => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

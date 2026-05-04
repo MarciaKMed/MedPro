@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medpro — Área do Aluno · Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal-950:#042f2e;--teal-900:#134e4a;--teal-800:#0f766e;--teal-700:#0d9488;
+  --teal-600:#0d9488;--teal-500:#14b8a6;--teal-400:#2dd4bf;--teal-300:#5eead4;
+  --teal-200:#99f6e4;--teal-100:#ccfbf1;--teal-50:#f0fdfa;
+  --white:#ffffff;--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;
+  --gray-300:#d1d5db;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-600:#4b5563;
+  --gray-700:#374151;--gray-800:#1f2937;--gray-900:#111827;
+  --font-serif:'Lora',Georgia,serif;--font-sans:'Inter',system-ui,sans-serif;
+}
+html{height:100%}
+body{
+  font-family:var(--font-sans);color:var(--gray-800);line-height:1.7;
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--teal-950) 0%,var(--teal-900) 40%,var(--teal-800) 100%);
+  position:relative;overflow:hidden;
+}
+body::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='https://lh3.googleusercontent.com/BWwSXvV4LN0Ta6HG1XenEDTm5TnwsPcdWZnJbaNH0aYWJRogW-V7D0BujuJwuDa4c6TcfNzLklDJFzeHNl4jNSXiCjr19Qq8scpGCZrnktYSP6Ns_3x1yMI10rKXZyzghqoySdCt d='M30 0v60M0 30h60' stroke='%23ffffff' stroke-width='.3' opacity='.05'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.login-wrapper{
+  width:100%;max-width:440px;margin:24px;position:relative;z-index:1;
+}
+.login-card{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:16px;padding:48px 40px;
+  box-shadow:0 8px 32px rgba(0,0,0,.25);
+}
+.logo{text-align:center;margin-bottom:32px}
+.logo-text{
+  font-family:var(--font-serif);font-size:2rem;font-weight:700;
+  color:var(--white);letter-spacing:1px;
+}
+.logo-sub{
+  display:block;font-family:var(--font-sans);font-size:.7rem;
+  color:var(--teal-300);letter-spacing:3px;text-transform:uppercase;margin-top:4px;
+}
+h1{
+  font-family:var(--font-serif);font-size:1.5rem;font-weight:600;
+  color:var(--white);text-align:center;margin-bottom:8px;
+}
+.subtitle{
+  text-align:center;color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:32px;
+}
+.form-group{margin-bottom:20px}
+.form-group label{
+  display:block;font-size:.8rem;font-weight:600;
+  color:rgba(255,255,255,.85);margin-bottom:6px;letter-spacing:.5px;
+}
+.form-group input{
+  width:100%;padding:14px 16px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;color:var(--white);font-family:var(--font-sans);font-size:.95rem;
+  transition:border-color .3s,background .3s;outline:none;
+}
+.form-group input::placeholder{color:rgba(255,255,255,.4)}
+.form-group input:focus{
+  border-color:var(--teal-400);background:rgba(255,255,255,.15);
+}
+.form-row{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:24px;font-size:.85rem;
+}
+.form-row a{color:var(--teal-300);text-decoration:none}
+.form-row a:hover{text-decoration:underline}
+.btn-primary{
+  display:block;width:100%;padding:15px;border:none;border-radius:8px;
+  background:linear-gradient(135deg,var(--teal-500),var(--teal-700));
+  color:var(--white);font-family:var(--font-sans);font-size:1rem;font-weight:700;
+  letter-spacing:.5px;cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 16px rgba(13,148,136,.4);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(13,148,136,.5)}
+.divider{
+  text-align:center;margin:28px 0;position:relative;
+  color:rgba(255,255,255,.4);font-size:.8rem;
+}
+.divider::before,.divider::after{
+  content:'';position:absolute;top:50%;width:38%;height:1px;
+  background:rgba(255,255,255,.15);
+}
+.divider::before{left:0}
+.divider::after{right:0}
+.link-register{
+  text-align:center;color:rgba(255,255,255,.7);font-size:.9rem;
+}
+.link-register a{color:var(--teal-300);font-weight:600;text-decoration:none}
+.link-register a:hover{text-decoration:underline}
+.footer-text{
+  text-align:center;color:rgba(255,255,255,.35);font-size:.75rem;margin-top:24px;
+}
+@media(max-width:480px){
+  .login-card{padding:36px 24px}
+  .logo-text{font-size:1.6rem}
+  h1{font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="logo"><img src="logo_medpro.png" alt="Medpro" height="60"></div>
+    <h1>Área do Aluno</h1>
+    <p class="subtitle">Acesse sua conta para continuar seus estudos</p>
+
+    <form action="#" method="post">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="seu@email.com.br" required>
+      </div>
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="••••••••" required>
+      </div>
+      <div class="form-row">
+        <span></span>
+        <a href="#">Esqueci minha senha</a>
+      </div>
+      <button type="submit" class="btn-primary">Entrar</button>
+    </form>
+
+    <div class="divider">ou</div>
+
+    <p class="link-register">
+      Ainda não tem conta? <a href="area_aluno_cadastro">Criar conta</a>
+    </p>
+  </div>
+  <p class="footer-text">© 2012–2026 Medpro Educação em Saúde Ltda. — CNPJ 60.260.243/0001-90</p>
+</div>
+</body>
+</html>
